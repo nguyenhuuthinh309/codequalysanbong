@@ -7,16 +7,22 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_DV;
+import thinhnh.fpoly.myapp.csdl.DAO.DAO_HOADON;
+import thinhnh.fpoly.myapp.csdl.DAO.DAO_KHUNGGIO;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_LOAISAN;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_NV;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_SAN;
+import thinhnh.fpoly.myapp.csdl.DAO.DAO_TTHD;
 import thinhnh.fpoly.myapp.csdl.DTO.DichVu;
+import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
+import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 import thinhnh.fpoly.myapp.csdl.DTO.LoaiSan;
 import thinhnh.fpoly.myapp.csdl.DTO.NhanVien;
 import thinhnh.fpoly.myapp.csdl.DTO.San;
+import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 
 
-@Database(entities = {NhanVien.class, LoaiSan.class, San.class, DichVu.class}, version = 1)
+@Database(entities = {NhanVien.class, LoaiSan.class, San.class, DichVu.class, KhungGio.class, TrangThaiHoaDon.class, HoaDon.class}, version = 1)
 public abstract class DataBaSe extends RoomDatabase {
     private static final String DATABASE_NAME = "db.db1";
     private static DataBaSe instance;
@@ -30,8 +36,14 @@ public abstract class DataBaSe extends RoomDatabase {
     public abstract DAO_DV dao_dv();
     public abstract DAO_SAN dao_san();
     public abstract DAO_LOAISAN dao_loaisan();
-
+    public abstract DAO_KHUNGGIO dao_khunggio();
     public abstract DAO_NV dao_nv();
+    public abstract DAO_TTHD dao_tthd();
+    public  abstract DAO_HOADON dao_hoadon();
+
+
+
+
 
 
 }

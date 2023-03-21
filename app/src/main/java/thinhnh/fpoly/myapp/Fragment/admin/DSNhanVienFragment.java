@@ -1,6 +1,8 @@
-package thinhnh.fpoly.myapp.Fragment.trangchu;
+package thinhnh.fpoly.myapp.Fragment.admin;
 
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import thinhnh.fpoly.myapp.R;
@@ -43,7 +47,7 @@ public class DSNhanVienFragment extends Fragment {
      Button btnAddNV;
      Button btnHuyAddNv;
 
-
+    ImageView imageView;
 
 
 
@@ -76,6 +80,8 @@ public class DSNhanVienFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         lisCs = (ListView) view.findViewById(R.id.lis_cs);
         floatCs = (FloatingActionButton) view.findViewById(R.id.float_cs);
+        imageView=new ImageView(getActivity());
+    imageView.setImageResource(R.drawable.avtnv);
         loadData();
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +92,6 @@ public class DSNhanVienFragment extends Fragment {
                 mkAdd = (TextInputEditText)  dialog.findViewById(R.id.mk_add);
                 tenAdd = (TextInputEditText)  dialog.findViewById(R.id.ten_add);
                 sdtAdd = (TextInputEditText)  dialog.findViewById(R.id.sdt_add);
-                cccdAdd = (TextInputEditText)  dialog.findViewById(R.id.cccd_add);
-                loaitk = dialog.findViewById(R.id.loaitaikhoan);
 
                 btnAddNV = (Button)  dialog.findViewById(R.id.btnAddNV);
                 btnHuyAddNv = (Button) dialog.findViewById(R.id.btnHuyAddNv);
@@ -99,11 +103,11 @@ public class DSNhanVienFragment extends Fragment {
                             String mk = mkAdd.getText().toString();
                             String ten = tenAdd.getText().toString();
                             String sdt = sdtAdd.getText().toString();
-                            String cccd = cccdAdd.getText().toString();
-                        String loaitaikhoan1 = loaitk.getText().toString();
+
+
 
                             //set thuộc tính HV
-                            nv = new NhanVien(tk,mk,ten,sdt,cccd,loaitaikhoan1);
+                            nv = new NhanVien(tk,mk,ten,sdt,Image_to_bye(imageView) );
                             //Add hv vào database
                             DataBaSe.getInstance(getActivity()).dao_nv().insertNV(nv);
                             //View list hv lên màn hình
@@ -131,5 +135,13 @@ public class DSNhanVienFragment extends Fragment {
         adapterListView_nv = new AdapterListView_NV(getActivity(),this::loadData);
         adapterListView_nv.setdata(list);
         lisCs.setAdapter(adapterListView_nv);
+    }
+    public byte[] Image_to_bye(ImageView imageView) {
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] bytes = stream.toByteArray();
+        return bytes;
     }
 }

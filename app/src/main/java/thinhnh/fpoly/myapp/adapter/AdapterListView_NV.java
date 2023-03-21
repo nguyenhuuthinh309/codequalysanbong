@@ -70,11 +70,17 @@ public class AdapterListView_NV extends BaseAdapter {
             convertView = inflater.inflate(R.layout.layout_item_nv, null);
             viewHolder.itemTennv = (TextView) convertView.findViewById(R.id.item_tennv);
             viewHolder.itemSdtnv = (TextView)  convertView.findViewById(R.id.item_sdtnv);
+            viewHolder.avata = convertView.findViewById(R.id.item_pt_avata);
             viewHolder.itemPtImgtd = (ImageView)  convertView.findViewById(R.id.item_pt_imgtd);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
+        }
+        if (nv.getAvatar_PT()!=null){
+            Bitmap bitmap= BitmapFactory.decodeByteArray(nv.getAvatar_PT(),0,nv.getAvatar_PT().length);
+            viewHolder.avata.setImageBitmap(bitmap);
+        }else {
         }
 //        viewHolder.avata.setImageResource(R.drawable.img_avatar_main);
         viewHolder.itemTennv.setText(nv.getTen_NV());
@@ -107,7 +113,7 @@ public class AdapterListView_NV extends BaseAdapter {
                                 mkEdit.setText(nv.getMk_NV());
                                 tenEdit.setText(nv.getTen_NV());
                                 sdtEdit.setText(nv.getSdt_NV());
-                                cccdEdit.setText(nv.getCccd_NV());
+
                                 btnEditHV.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -116,7 +122,7 @@ public class AdapterListView_NV extends BaseAdapter {
                                         nv.setMk_NV(mkEdit.getText().toString());
                                         nv.setTen_NV(tenEdit.getText().toString());
                                         nv.setSdt_NV(sdtEdit.getText().toString());
-                                        nv.setCccd_NV(cccdEdit.getText().toString());
+
                                         DataBaSe.getInstance(context).dao_nv().updataNV(nv);
                                         inteloadData.loadData();
                                         Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
@@ -160,7 +166,7 @@ public class AdapterListView_NV extends BaseAdapter {
 
          TextView itemTennv;
          TextView itemSdtnv;
-         ImageView itemPtImgtd;
+         ImageView avata,itemPtImgtd;
 
 
 

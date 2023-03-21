@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +36,8 @@ public class AdapterListView_San extends BaseAdapter {
     LoaiSan loaiSan;
     InteLoadData inteCS;
     ArrayList<HashMap<String,Object>> listHM;
+
+
     public AdapterListView_San(Context context, InteLoadData inteCS) {
         this.context = context;
         this.inteCS = inteCS;
@@ -75,23 +79,30 @@ public class AdapterListView_San extends BaseAdapter {
             viewHolder.itemTensan = (TextView) view.findViewById(R.id.item_tensan);
             viewHolder.itemVitri = (TextView) view.findViewById(R.id.item_vitri);
             viewHolder.itemGia = (TextView) view.findViewById(R.id.item_gia);
-
+            viewHolder.avt = view.findViewById(R.id.item_avata_san);
             viewHolder.itemPtImgtd = (ImageView) view.findViewById(R.id.item_pt_imgtd);
             viewHolder.itemtenloaisan = (TextView) view.findViewById(R.id.item_tenloaisan);
+
 
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
+        if (san.getAvatar_san()!=null){
+            Bitmap bitmap= BitmapFactory.decodeByteArray(san.getAvatar_san(),0,san.getAvatar_san().length);
+            viewHolder.avt.setImageBitmap(bitmap);
+        }else {
+        }
+        viewHolder.itemTensan.setText("Tên Sân  :  "+san.getTensan());
+        viewHolder.itemVitri.setText("Vị Trí       :  "+san.getVitrisan());
+        viewHolder.itemGia.setText("Giá Sân   :  "+san.getGiasan());
 
-        viewHolder.itemTensan.setText(san.getTensan());
-        viewHolder.itemVitri.setText(san.getVitrisan());
-        viewHolder.itemGia.setText(san.getGiasan());
 
-
-    viewHolder.itemtenloaisan.setText(san.getTenloai());
+    viewHolder.itemtenloaisan.setText("Loại Sân  :  "+san.getTenloai());
 
         ViewHolder finalViewHolder = viewHolder;
+
+
         viewHolder.itemPtImgtd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,13 +131,21 @@ public class AdapterListView_San extends BaseAdapter {
                                 giaedit.setText(san.getGiasan());
 
 
-                                SimpleAdapter simpleAdapter = new SimpleAdapter(context,
-                                        listHM,
-                                        android.R.layout.simple_list_item_1,
-                                        new String[]{"tenloai"},
-                                        new int[]{android.R.id.text1} );
+
+
+                                SimpleAdapter simpleAdapter = new SimpleAdapter(context, listHM, android.R.layout.simple_list_item_1, new String[]{"tenloai"}, new int[]{android.R.id.text1});
                                 spnloaisanedit.setAdapter(simpleAdapter);
 
+                                int index = 0;
+                                int postion = -1;
+                                for (HashMap<String,Object> item: listHM){
+                                    if ((int)item.get("maloai") == san.getId_loaisan()){
+                                        postion = index;
+
+                                    }
+                                    index++;
+                                }
+                                spnloaisanedit.setSelection(postion);
 
 
 
@@ -138,13 +157,21 @@ public class AdapterListView_San extends BaseAdapter {
                                         san.setVitrisan(vitriedit.getText().toString());
                                         san.setGiasan(giaedit.getText().toString());
                                         HashMap<String,Object> hs = (HashMap<String, Object>) spnloaisanedit.getSelectedItem();
-                                        int tenloai = (int) hs.get("loaisan");
-                                        san.setId_loaisan(tenloai);
+                                        int maloai = (int) hs.get("maloai");
+                                        san.setId_loaisan(maloai);
+
+
 
                                         DataBaSe.getInstance(context).dao_san().updataSan(san);
+
                                         inteCS.loadData();
+
+
                                         Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
+
+
                                         dialogEdit.dismiss();
+
                                     }
                                 });
                                 btnHuyEditcs.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +216,7 @@ public class AdapterListView_San extends BaseAdapter {
          TextView itemVitri;
          TextView itemGia;
          TextView itemLoaisan, itemtenloaisan;
-         ImageView itemPtImgtd;
+         ImageView avt, itemPtImgtd;
 
 
 

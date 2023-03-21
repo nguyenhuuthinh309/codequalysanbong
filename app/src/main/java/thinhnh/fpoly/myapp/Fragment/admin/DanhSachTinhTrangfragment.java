@@ -1,4 +1,4 @@
-package thinhnh.fpoly.myapp.Fragment.trangchu;
+package thinhnh.fpoly.myapp.Fragment.admin;
 
 import android.os.Bundle;
 

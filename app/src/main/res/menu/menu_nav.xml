@@ -21,17 +21,16 @@
             <item android:title="Danh Sách Tình Trạng Sân"
                 android:icon="@drawable/lien_he_icon"
                 android:id="@+id/dstinhtrangsan"/>
+            <item android:title="Khung Giờ"
+                android:icon="@drawable/lien_he_icon"
+                android:id="@+id/khunggio"/>
+            <item android:title="Trạng Thái"
+                android:icon="@drawable/lien_he_icon"
+                android:id="@+id/trangthai"/>
 
         </menu>
     </item>
-    <item android:title="Thống Kê">
-        <menu>
-            <item android:id="@+id/mDoanhThu"
-                android:title="Doanh Thu"
-                android:icon="@drawable/lien_he_icon"/>
 
-        </menu>
-    </item>
 
 
     <item android:title="Nhân Viên">
@@ -51,7 +50,14 @@
 
         </menu>
     </item>
+    <item android:title="Thống Kê">
+        <menu>
+            <item android:id="@+id/mDoanhThu"
+                android:title="Doanh Thu"
+                android:icon="@drawable/lien_he_icon"/>
 
+        </menu>
+    </item>
 
 
 

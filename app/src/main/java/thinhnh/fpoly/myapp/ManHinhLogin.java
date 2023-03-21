@@ -98,12 +98,12 @@ public class ManHinhLogin extends AppCompatActivity {
                             String tk_nv = listCheckNV.get(0).getTk_NV();
                             String ten_nv = listCheckNV.get(0).getTen_NV();
                             String sdt = listCheckNV.get(0).getSdt_NV();
-                            String cccd = listCheckNV.get(0).getCccd_NV();
+
                             bundle.putInt("idnv",id_nv);
                             bundle.putString("tknv", tk_nv);
                             bundle.putString("tennv", ten_nv);
                             bundle.putString("sdtnv",sdt);
-                            bundle.putString("cccdnv", cccd);
+
                             intent.putExtras(bundle);
                             Toast.makeText(ManHinhLogin.this, "Đăng nhập thành công nhân viên", Toast.LENGTH_SHORT).show();
                             if (ckluuMK.isChecked()){

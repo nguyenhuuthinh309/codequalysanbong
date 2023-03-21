@@ -1,6 +1,7 @@
 package thinhnh.fpoly.myapp.csdl.DTO;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
@@ -18,23 +19,28 @@ public class San {
      int id_loaisan;
      String tenloai;
 
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] avatar_san;
+
     public San() {
     }
 
-    public San(String tensan, String vitrisan, String giasan, int id_loaisan) {
-        this.tensan = tensan;
-        this.vitrisan = vitrisan;
-        this.giasan = giasan;
-        this.id_loaisan = id_loaisan;
-    }
-
-
-    public San(String tensan, String vitrisan, String giasan, int id_loaisan, String tenloai) {
+    public San(String tensan, String vitrisan, String giasan, int id_loaisan, String tenloai, byte[] avatar_san) {
         this.tensan = tensan;
         this.vitrisan = vitrisan;
         this.giasan = giasan;
         this.id_loaisan = id_loaisan;
         this.tenloai = tenloai;
+        this.avatar_san = avatar_san;
+    }
+
+
+    public byte[] getAvatar_san() {
+        return avatar_san;
+    }
+
+    public void setAvatar_san(byte[] avatar_san) {
+        this.avatar_san = avatar_san;
     }
 
     public int getId_san() {

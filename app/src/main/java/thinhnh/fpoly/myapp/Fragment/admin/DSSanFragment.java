@@ -1,6 +1,8 @@
-package thinhnh.fpoly.myapp.Fragment.trangchu;
+package thinhnh.fpoly.myapp.Fragment.admin;
 
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -19,6 +22,7 @@ import android.widget.Spinner;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,7 +38,7 @@ public class DSSanFragment extends Fragment {
 
      ListView lisCs;
      FloatingActionButton floatCs;
-
+    ImageView imageView;
     San san;
 
      TextInputEditText tensan;
@@ -85,7 +89,11 @@ AdapterListView_San adapterListView_san;
 
         lisCs = (ListView) view.findViewById(R.id.lis_cs);
         floatCs = (FloatingActionButton) view.findViewById(R.id.float_cs);
+
+        imageView=new ImageView(getActivity());
+        imageView.setImageResource(R.drawable.sanbong);
         loadData();
+
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,11 +122,11 @@ AdapterListView_San adapterListView_san;
 
 
                         //set thuộc tính HV
-                       san  = new San(tensan1,vitri1,giasan1,maloai,tenloai);
+                       san  = new San(tensan1,vitri1,giasan1,maloai,tenloai,Image_to_bye(imageView));
                         //Add hv vào database
                         DataBaSe.getInstance(getActivity()).dao_san().insertSan(san);
                         //View list hv lên màn hình
-                        loadData();
+                     loadData();
                         Log.d("zzz", "onViewCreated: " + list.size());
                         dialog.dismiss();
 
@@ -158,12 +166,24 @@ AdapterListView_San adapterListView_san;
         return  listHM;
 
     }
-
-
     public void loadData() {
         list1 = (ArrayList<San>) DataBaSe.getInstance(getActivity()).dao_san().getAllSan();
         adapterListView_san = new AdapterListView_San(getActivity(),this::loadData);
         adapterListView_san.setdata(list1);
         lisCs.setAdapter(adapterListView_san);
+
+
+
+    }
+
+
+
+    public byte[] Image_to_bye(ImageView imageView) {
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] bytes = stream.toByteArray();
+        return bytes;
     }
 }

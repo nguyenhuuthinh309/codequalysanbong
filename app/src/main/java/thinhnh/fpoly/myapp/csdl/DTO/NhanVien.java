@@ -15,20 +15,18 @@ public class NhanVien {
     private String ten_NV;
     private String mk_NV;
     private String sdt_NV;
-    private String cccd_NV;
-    String loaitk;
-
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] avatar_PT;
 
     public NhanVien() {
     }
 
-    public NhanVien(String tk_NV, String mk_NV,String ten_NV,  String sdt_NV, String cccd_NV, String loaitk) {
+    public NhanVien(String tk_NV,  String mk_NV, String ten_NV,String sdt_NV, byte[] avatar_PT) {
         this.tk_NV = tk_NV;
         this.ten_NV = ten_NV;
         this.mk_NV = mk_NV;
         this.sdt_NV = sdt_NV;
-        this.cccd_NV = cccd_NV;
-        this.loaitk = loaitk;
+        this.avatar_PT = avatar_PT;
     }
 
     public int getId_NV() {
@@ -71,20 +69,12 @@ public class NhanVien {
         this.sdt_NV = sdt_NV;
     }
 
-    public String getCccd_NV() {
-        return cccd_NV;
+    public byte[] getAvatar_PT() {
+        return avatar_PT;
     }
 
-    public void setCccd_NV(String cccd_NV) {
-        this.cccd_NV = cccd_NV;
-    }
-
-    public String getLoaitk() {
-        return loaitk;
-    }
-
-    public void setLoaitk(String loaitk) {
-        this.loaitk = loaitk;
+    public void setAvatar_PT(byte[] avatar_PT) {
+        this.avatar_PT = avatar_PT;
     }
 
     public String toString(){

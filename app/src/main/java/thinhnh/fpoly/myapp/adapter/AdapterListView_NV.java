@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.csdl.DTO.NhanVien;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;

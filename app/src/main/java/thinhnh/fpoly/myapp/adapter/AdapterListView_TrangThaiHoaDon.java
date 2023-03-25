@@ -20,7 +20,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 
 import thinhnh.fpoly.myapp.R;
-import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 import thinhnh.fpoly.myapp.interfaces.InteLoadData;

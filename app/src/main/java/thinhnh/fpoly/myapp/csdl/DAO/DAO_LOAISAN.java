@@ -1,7 +1,5 @@
 package thinhnh.fpoly.myapp.csdl.DAO;
 
-import android.renderscript.Float2;
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -9,8 +7,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
-
 
 import thinhnh.fpoly.myapp.csdl.DTO.LoaiSan;
 @Dao

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp"
-    android:layout_height="match_parent">
 
+    tools:context=".Fragment.nhanvien.ThemHoaDonActivity">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
 
@@ -22,86 +24,204 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
-
-        android:layout_margin="3dp"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Loại Sân"/>
-        <Spinner
+        >
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/spnloaisanedit"/>
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Khung Giờ"/>
+                <Spinner
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spnkhunggioedit"/>
+                <TextView
+                    android:id="@+id/giakhunggio"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tên Sân"/>
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spntensanedit"/>
+                <TextView
+                    android:id="@+id/giasan1edit"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="giá"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:weightSum="3"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+
+                android:layout_width="match_parent"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bóng:"/>
+                <EditText
+                    android:id="@+id/edsoluongbongedit"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvgianbongedit"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:weightSum="3"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+
+                android:layout_width="match_parent"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nước:"/>
+                <EditText
+                    android:id="@+id/edsoluongnuocedit"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvgianuocedit"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="3"
+                android:layout_height="35dp"
+                android:layout_margin="3dp"
+
+                android:layout_width="match_parent"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Áo:"/>
+                <EditText
+                    android:id="@+id/edsoluongaoedit"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvgiaaoedit"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="10"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
+
+    <LinearLayout
+
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+
+            android:textColor="#FF0000"
+            android:id="@+id/tongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Tổng Tiền"/>
+        <TextView
+            android:text="tong"
+            android:textAlignment="center"
+            android:id="@+id/texttongtienedit"
+            android:textSize="26dp"
+            android:textColor="#FF0000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
     <LinearLayout
 
         android:layout_margin="3dp"
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên Sân"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/spntensanedit"/>
-
-    </LinearLayout>
-    <LinearLayout
-
-        android:layout_margin="3dp"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Khung Giờ"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/spnkhunggioedit"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_margin="3dp"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:textSize="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dịch Vụ"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/spndichvuedit"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_margin="3dp"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:orientation="horizontal">
         <TextView
             android:textSize="20dp"
@@ -114,32 +234,6 @@
             android:id="@+id/spntrangthaiedit"/>
 
     </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_margin="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-
-            android:textColor="#FF0000"
-            android:textSize="26dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tổng Tiền"/>
-        <TextView
-            android:textSize="26dp"
-            android:textColor="#FF0000"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tongtienedit"/>
-
-    </LinearLayout>
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -170,5 +264,6 @@
             android:textStyle="bold"
             />
     </LinearLayout>
-</LinearLayout>
 
+
+</LinearLayout>

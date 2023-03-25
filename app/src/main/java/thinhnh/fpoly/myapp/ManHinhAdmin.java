@@ -23,21 +23,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import thinhnh.fpoly.myapp.Fragment.FragmentChung;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.DoiMKFragment;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.ThongTinFragment;
+import thinhnh.fpoly.myapp.Fragment.admin.DSDichVuFragment;
+import thinhnh.fpoly.myapp.Fragment.admin.DSLoaiSanFragment;
+import thinhnh.fpoly.myapp.Fragment.admin.DSNhanVienFragment;
+import thinhnh.fpoly.myapp.Fragment.admin.DSSanFragment;
+import thinhnh.fpoly.myapp.Fragment.admin.DanhSachTinhTrangfragment;
 import thinhnh.fpoly.myapp.Fragment.admin.KhungGioFragment;
 import thinhnh.fpoly.myapp.Fragment.admin.TrangThaihdFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.BaoCaoFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.HoaDonFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.TimKiemFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.TrangThaiFragment;
-import thinhnh.fpoly.myapp.Fragment.admin.DSDichVuFragment;
-import thinhnh.fpoly.myapp.Fragment.admin.DSLoaiSanFragment;
-import thinhnh.fpoly.myapp.Fragment.admin.DSNhanVienFragment;
-import thinhnh.fpoly.myapp.Fragment.admin.DSSanFragment;
-import thinhnh.fpoly.myapp.Fragment.admin.DanhSachTinhTrangfragment;
 import thinhnh.fpoly.myapp.Fragment.thongke.ThongKeFragment;
-import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
-import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -107,6 +105,8 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
             menu.findItem(R.id.dsloaisan).setVisible(false);
             menu.findItem(R.id.dsdichvu).setVisible(false);
             menu.findItem(R.id.dstinhtrangsan).setVisible(false);
+            menu.findItem(R.id.khunggio).setVisible(false);
+            menu.findItem(R.id.trangthai).setVisible(false);
         }
 
     }

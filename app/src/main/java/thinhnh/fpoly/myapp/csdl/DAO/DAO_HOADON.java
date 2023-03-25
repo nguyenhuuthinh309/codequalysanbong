@@ -10,7 +10,6 @@ import androidx.room.Update;
 import java.util.List;
 
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
-import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 
 @Dao
 public interface DAO_HOADON {

@@ -2,7 +2,6 @@ package thinhnh.fpoly.myapp.csdl.DTO;
 
 
 import androidx.room.Entity;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "LoaiSan")

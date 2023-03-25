@@ -8,7 +8,6 @@ import androidx.room.Update;
 
 import java.util.List;
 
-
 import thinhnh.fpoly.myapp.csdl.DTO.San;
 @Dao
 public interface DAO_SAN {

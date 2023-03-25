@@ -14,9 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import thinhnh.fpoly.myapp.model.model_slideImage;
-
 import thinhnh.fpoly.myapp.R;
+import thinhnh.fpoly.myapp.model.model_slideImage;
 public class slideAdapter extends PagerAdapter {
     private Context mContext;
     private ArrayList<model_slideImage> model_slideImages;

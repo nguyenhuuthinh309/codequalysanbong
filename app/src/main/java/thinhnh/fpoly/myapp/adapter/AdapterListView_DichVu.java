@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.csdl.DTO.DichVu;
-import thinhnh.fpoly.myapp.csdl.DTO.LoaiSan;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 import thinhnh.fpoly.myapp.interfaces.InteLoadData;
 

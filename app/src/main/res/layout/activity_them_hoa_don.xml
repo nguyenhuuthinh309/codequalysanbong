@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".Fragment.nhanvien.ThemHoaDonActivity">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:textSize="16dp"
+            android:layout_height="match_parent"
+            android:id="@+id/tenkh"
+            android:textColorHint="@color/mau_nen"
+            android:hint="Tên Khách Hàng "
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+
+    <LinearLayout
+        android:layout_height="35dp"
+        android:layout_margin="3dp"
+        android:weightSum="3"
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Khung Giờ"/>
+        <Spinner
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spnkhunggio"/>
+        <TextView
+            android:id="@+id/giakhunggio"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+           />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="35dp"
+        android:layout_margin="3dp"
+           android:weightSum="3"
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tên Sân"/>
+        <Spinner
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spntensan"/>
+        <TextView
+            android:id="@+id/giasan1"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+           android:text="giá"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:weightSum="3"
+        android:layout_height="35dp"
+        android:layout_margin="3dp"
+
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bóng:"/>
+       <EditText
+           android:id="@+id/edsoluongbong"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+          />
+
+
+        <TextView
+            android:id="@+id/tvgianbong"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="10"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="3"
+        android:layout_height="35dp"
+        android:layout_margin="3dp"
+
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nước:"/>
+        <EditText
+            android:id="@+id/edsoluongnuoc"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            />
+
+
+        <TextView
+            android:id="@+id/tvgianuoc"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="3"
+        android:layout_height="35dp"
+        android:layout_margin="3dp"
+
+        android:layout_width="match_parent"
+
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Áo:"/>
+        <EditText
+            android:id="@+id/edsoluongao"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            />
+
+
+        <TextView
+            android:id="@+id/tvgiaao"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="10"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+
+            android:textColor="#FF0000"
+            android:id="@+id/tongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Tổng Tiền"/>
+        <TextView
+            android:text="tong"
+            android:textAlignment="center"
+            android:id="@+id/texttongtien"
+            android:textSize="26dp"
+            android:textColor="#FF0000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           />
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_margin="3dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng Thái"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spntrangthai"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        >
+        <Button
+            android:background="@color/mau_nen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddhdd"
+            android:text="Lưu"
+
+            android:backgroundTint="#979494"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            />
+        <Button
+            android:background="@color/mau_nen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnHuyAddhdd"
+            android:text="Hủy"
+            android:backgroundTint="#979494"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

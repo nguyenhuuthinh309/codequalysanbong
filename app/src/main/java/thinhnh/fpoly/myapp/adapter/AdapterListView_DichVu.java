@@ -28,6 +28,7 @@ public class AdapterListView_DichVu extends BaseAdapter {
     ArrayList<DichVu> list = new ArrayList<>();
     Context context;
     InteLoadData intels;
+    //asd
 
     public AdapterListView_DichVu(Context context, InteLoadData intels) {
         this.context = context;

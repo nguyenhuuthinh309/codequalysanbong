@@ -26,6 +26,7 @@ import thinhnh.fpoly.myapp.interfaces.InteLoadData;
 
 public class AdapterListView_DichVu extends BaseAdapter {
     ArrayList<DichVu> list = new ArrayList<>();
+    //h
     Context context;
     InteLoadData intels;
     //asd

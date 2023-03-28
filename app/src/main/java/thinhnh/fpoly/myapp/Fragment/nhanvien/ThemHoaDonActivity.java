@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import thinhnh.fpoly.myapp.R;
+import thinhnh.fpoly.myapp.adapter.AdapterListView_HoaDon;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 import thinhnh.fpoly.myapp.csdl.DTO.San;
@@ -42,10 +45,15 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      Spinner spntrangthai;
      Button btnAddhdd;
      Button btnHuyAddhdd;
+     ImageView timkiemhoadon;
 
     ArrayList<San> listsan = new ArrayList<>();
     ArrayList<KhungGio> listkhunggio = new ArrayList<>();
     ArrayList<TrangThaiHoaDon> listtthd = new ArrayList<>();
+
+    ArrayList<HoaDon> listhoadon = new ArrayList<>();
+
+    AdapterListView_HoaDon adapterListView_hoaDon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +64,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
         spnkhunggio = (Spinner) findViewById(R.id.spnkhunggio);
-        giakhunggio = (TextView) findViewById(R.id.giakhunggio);
+        timkiemhoadon = (ImageView) findViewById(R.id.timkiemhoadon);
         spntensan = (Spinner) findViewById(R.id.spntensan);
         giasan1 = (TextView) findViewById(R.id.giasan1);
         edsoluongbong = (EditText) findViewById(R.id.edsoluongbong);
@@ -72,6 +80,8 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
 
 
+        AdapterListView_HoaDon adapterListView_hoaDon;
+
 
 
         SimpleAdapter simpleAdapter1 = new SimpleAdapter(this, getDSSan(), android.R.layout.simple_list_item_1, new String[]{"tensan"}, new int[]{android.R.id.text1});
@@ -84,21 +94,32 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
 
+        timkiemhoadon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
+                int makg = (int) hs2.get("makhunggio");
+
+                String khunggio = (String) hs2.get("khunggio");
+            if (makg ==1) {
+
+                Toast.makeText(ThemHoaDonActivity.this, "abdddc", Toast.LENGTH_SHORT).show();
+            }
+
+            }
+        });
 
 
         tongtienbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tenkh1 = tenkh.getText().toString();
-
+                Toast.makeText(ThemHoaDonActivity.this, "thinh test", Toast.LENGTH_SHORT).show();
                 String edsoluonggao = edsoluongao.getText().toString();
                 int so11 = Integer.parseInt(edsoluonggao);
                 String edsoluonggbong = edsoluongbong.getText().toString();
                 int so22 = Integer.parseInt(edsoluonggbong);
                 String edsoluonggnuoc = edsoluongnuoc.getText().toString();
                 int so33 = Integer.parseInt(edsoluonggnuoc);
-
-
 
                 String giaao = String.valueOf(5);
                 int so1 = Integer.parseInt(giaao);
@@ -107,19 +128,12 @@ public class ThemHoaDonActivity extends AppCompatActivity {
                 String gianuoc = String.valueOf(10);
                 int so3 = Integer.parseInt(gianuoc);
 
-
-
                 int tich = so1 *so11;
                 int tich2 = so2 *so22;
                 int tich3 = so3 *so33;
 
-
-
-
-
                 HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
                 int masan = (int) hs1.get("masan");
-
                 String tensan = (String) hs1.get("tensan");
                 String giasan = (String) hs1.get("giasan");
                 giasan1.setText(giasan);
@@ -127,16 +141,6 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
             int    tongtientatca1 = tich + tich2 + tich3 + giasan1;
                 texttongtien.setText(String.valueOf(tongtientatca1));
-
-
-
-                        HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
-                int makg = (int) hs2.get("makhunggio");
-                String khunggio = (String) hs2.get("khunggio");
-
-                HashMap<String,Object> hs4 = (HashMap<String, Object>) spntrangthai.getSelectedItem();
-                int matthd1 = (int) hs4.get("matthd");
-                String tentthd1 = (String) hs4.get("tentthd");
 
 
             }
@@ -264,6 +268,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         return  listHM;
 
     }
+
 
 
     @Override

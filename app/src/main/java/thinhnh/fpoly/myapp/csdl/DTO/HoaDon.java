@@ -1,22 +1,26 @@
 package thinhnh.fpoly.myapp.csdl.DTO;
 
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 
 @Entity(tableName = "HoaDon", foreignKeys = {
         @ForeignKey(entity = KhungGio.class, parentColumns = "id_khunggio", childColumns = "id_khunggio", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = San.class, parentColumns = "id_san", childColumns = "id_san", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = TrangThaiHoaDon.class, parentColumns = "id_trangthaihd", childColumns = "id_trangthaihd", onDelete = ForeignKey.CASCADE),})
-public class HoaDon {
+public class HoaDon implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id_hoadon;
     String tenkh;
+    @ColumnInfo(name = "id_san")
     int id_san;
     String tensan;
     String giasan;
-
+    @ColumnInfo(name = "id_khunggio")
     int id_khunggio;
     String khunggio;
 

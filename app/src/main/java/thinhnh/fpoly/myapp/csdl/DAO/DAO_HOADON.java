@@ -20,6 +20,10 @@ public interface DAO_HOADON {
     void updataHOADON(HoaDon trangThaiHoaDon);
     @Delete
     void deleteHOADON(HoaDon trangThaiHoaDon);
+
     @Query("select * from HoaDon")
     List<HoaDon> getAllHOADON();
+
+    @Query("SELECT * from HoaDon where id_khunggio = :id")
+    List<HoaDon> getabc(int id);
 }

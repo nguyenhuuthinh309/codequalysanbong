@@ -40,13 +40,5 @@
         android:textSize="14dp"
         android:id="@+id/tv_nav_chucvu"
         android:textStyle="italic" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thông báo"
-        android:textColor="@color/white"
-        android:layout_marginLeft="20dp"
-        android:fontFamily="@font/robito_indam"
-        android:textSize="25dp"
-        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

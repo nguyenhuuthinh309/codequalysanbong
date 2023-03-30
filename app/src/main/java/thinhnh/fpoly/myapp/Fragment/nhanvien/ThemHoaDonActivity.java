@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
 
     HoaDon hd;
+    KhungGio kg;
      TextInputEditText tenkh;
      Spinner spnkhunggio;
      TextView giakhunggio;
@@ -46,7 +48,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      Button btnAddhdd;
      Button btnHuyAddhdd;
      ImageView timkiemhoadon;
-
+    ListView lv_BT;
     ArrayList<San> listsan = new ArrayList<>();
     ArrayList<KhungGio> listkhunggio = new ArrayList<>();
     ArrayList<TrangThaiHoaDon> listtthd = new ArrayList<>();
@@ -61,7 +63,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_them_hoa_don);
 
 
-
+        lv_BT = findViewById(R.id.lis_BT);
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
         spnkhunggio = (Spinner) findViewById(R.id.spnkhunggio);
         timkiemhoadon = (ImageView) findViewById(R.id.timkiemhoadon);
@@ -97,14 +99,17 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         timkiemhoadon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
-                int makg = (int) hs2.get("makhunggio");
+                int makg1 = (int) hs2.get("makhunggio");
 
-                String khunggio = (String) hs2.get("khunggio");
-            if (makg ==1) {
+                listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getabc(makg1);
+loadData();
 
-                Toast.makeText(ThemHoaDonActivity.this, "abdddc", Toast.LENGTH_SHORT).show();
-            }
+//                if(DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getAllHOADON().equals(makg1)){
+//                    loadData();
+//                    giasan1.setText("abcd");
+//                }
 
             }
         });
@@ -269,6 +274,17 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
     }
 
+    public void loadData(int id) {
+
+
+    }
+
+    private void loadData() {
+        listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(this).dao_hoadon().getAllHOADON();
+        adapterListView_hoaDon = new AdapterListView_HoaDon(this, this::loadData);
+        adapterListView_hoaDon.setdata(listhoadon);
+        lv_BT.setAdapter(adapterListView_hoaDon);
+    }
 
 
     @Override

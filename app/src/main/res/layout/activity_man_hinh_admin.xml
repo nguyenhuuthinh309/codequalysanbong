@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/drr"
-
+    android:background="#08c25e"
     android:layout_height="match_parent"
     tools:openDrawer="start"
     tools:context=".ManHinhAdmin">
+
+
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <RelativeLayout
             android:id="@+id/r1"
@@ -28,6 +33,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar_mhAdmin"
                 android:layout_width="40dp"
+
                 android:layout_height="40dp" />
 
 

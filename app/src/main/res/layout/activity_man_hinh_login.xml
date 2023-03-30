@@ -119,21 +119,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ln_infor_login">
 
-                <TextView
-                    android:id="@+id/tv_quenMK"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="16dp"
-                    android:text="Quên Mật Khẩu?"
-                    android:textColor="#1876f2" />
 
                 <CheckBox
                     android:id="@+id/chk_luumk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_quenMK"
+                 android:backgroundTint="@color/black"
                     android:text="lưu mật khẩu"
                     android:textColor="@color/black" />
             </RelativeLayout>
@@ -150,7 +141,7 @@
 
             <Button
                 android:id="@+id/btn_mhlogin_dangnhap"
-                android:layout_width="200dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="30dp"

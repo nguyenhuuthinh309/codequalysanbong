@@ -203,17 +203,19 @@
         android:orientation="horizontal">
         <Button
 
-            android:textColor="#FF0000"
+            android:textColor="@color/white"
             android:id="@+id/tongtien"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Tổng Tiền"/>
         <TextView
             android:text="tong"
+            android:textStyle="bold"
             android:textAlignment="center"
+            android:paddingTop="5dp"
             android:id="@+id/texttongtien"
             android:textSize="26dp"
-            android:textColor="#FF0000"
+            android:textColor="@color/mau_nen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
            />
@@ -268,6 +270,10 @@
             />
     </LinearLayout>
 
-
+    <ListView
+        android:id="@+id/lis_BT"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

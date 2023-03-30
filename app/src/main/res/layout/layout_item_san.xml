@@ -9,12 +9,13 @@
         <LinearLayout
 
             android:layout_marginBottom="10dp"
-            android:background="@drawable/mauxam"
+            android:background="@drawable/shape_background_item"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:orientation="horizontal"
             android:weightSum="7"
+            android:layout_margin="10dp"
             android:layout_alignParentRight="true"
 
             android:gravity="center">

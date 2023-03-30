@@ -29,12 +29,13 @@
         android:layout_margin="20dp"
         >
         <Button
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnAddkhunggio"
             android:text="Lưu"
 
-            android:backgroundTint="#979494"
+            android:backgroundTint="@color/mau_nen"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:textStyle="bold"
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnHuyAddkhunggio"
             android:text="Hủy"
-            android:backgroundTint="#979494"
+            android:backgroundTint="@color/mau_nen"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:textStyle="bold"

@@ -6,22 +6,19 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".Fragment.FragmentChung">
 
-<ImageView
-    android:id="@+id/img_mhc_logo"
-    android:layout_width="150dp"
-    android:layout_height="90dp"
-    android:layout_marginTop="20dp"
-    android:src="@drawable/logo"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    />
+
+
+
+
 <LinearLayout
+    android:layout_marginTop="70dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+   android:background="@color/white"
     android:gravity="center"
 
-    android:layout_below="@+id/img_mhc_logo">
+  >
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ViewPagerSlide"
         android:layout_width="250dp"

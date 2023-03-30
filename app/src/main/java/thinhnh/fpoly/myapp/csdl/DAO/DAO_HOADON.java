@@ -24,6 +24,7 @@ public interface DAO_HOADON {
     @Query("select * from HoaDon")
     List<HoaDon> getAllHOADON();
 
-    @Query("SELECT * from HoaDon where id_khunggio = :id")
-    List<HoaDon> getabc(int id);
+    @Query("SELECT * FROM HoaDon WHERE id_khunggio= :khunggio ")
+    List<HoaDon> getabc(int khunggio);
+
 }

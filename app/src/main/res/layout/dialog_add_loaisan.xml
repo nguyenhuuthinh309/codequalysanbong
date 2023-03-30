@@ -34,7 +34,7 @@
             android:id="@+id/btnAddNV"
             android:text="Lưu"
 
-            android:backgroundTint="#979494"
+            android:backgroundTint="@color/mau_nen"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:textStyle="bold"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnHuyAddNv"
             android:text="Hủy"
-            android:backgroundTint="#979494"
+            android:backgroundTint="@color/mau_nen"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:textStyle="bold"

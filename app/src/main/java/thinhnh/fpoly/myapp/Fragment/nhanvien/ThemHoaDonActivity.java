@@ -1,8 +1,10 @@
 package thinhnh.fpoly.myapp.Fragment.nhanvien;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -15,7 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import thinhnh.fpoly.myapp.R;
@@ -27,9 +32,11 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ThemHoaDonActivity extends AppCompatActivity {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    int myear,mmonth,mday;
 
-
-    HoaDon hd;
+    HoaDon hd = new HoaDon();
+    San san = new San();
     KhungGio kg;
      TextInputEditText tenkh;
      Spinner spnkhunggio;
@@ -46,6 +53,8 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      TextView texttongtien;
      Spinner spntrangthai;
      Button btnAddhdd;
+     EditText edtngaythue;
+     Button btnngaythue;
      Button btnHuyAddhdd;
      ImageView timkiemhoadon;
     ListView lv_BT;
@@ -61,7 +70,8 @@ public class ThemHoaDonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_hoa_don);
-
+        edtngaythue = findViewById(R.id.edtngaythue);
+        btnngaythue = findViewById(R.id.btnngaythue);
 
         lv_BT = findViewById(R.id.lis_BT);
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
@@ -80,7 +90,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
         btnAddhdd = (Button) findViewById(R.id.btnAddhdd);
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
-
+        giasan1.setText(san.getGiasan());
 
         AdapterListView_HoaDon adapterListView_hoaDon;
 
@@ -95,7 +105,18 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
-
+btnngaythue.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Calendar calendar = Calendar.getInstance();
+        myear = calendar.get(Calendar.YEAR);
+        mmonth= calendar.get(Calendar.MONTH);
+        mday = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog dialog = new DatePickerDialog(ThemHoaDonActivity.this
+                ,0,mdatetungay,myear,mmonth,mday);
+        dialog.show();
+    }
+});
         timkiemhoadon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,14 +146,14 @@ loadData();
                 int so22 = Integer.parseInt(edsoluonggbong);
                 String edsoluonggnuoc = edsoluongnuoc.getText().toString();
                 int so33 = Integer.parseInt(edsoluonggnuoc);
-
                 String giaao = String.valueOf(5);
                 int so1 = Integer.parseInt(giaao);
                 String giabong = String.valueOf(5);
                 int so2 = Integer.parseInt(giabong);
                 String gianuoc = String.valueOf(10);
                 int so3 = Integer.parseInt(gianuoc);
-
+                int a  = hd.getAo();
+                int aogia = a* so11;
                 int tich = so1 *so11;
                 int tich2 = so2 *so22;
                 int tich3 = so3 *so33;
@@ -162,7 +183,7 @@ loadData();
                 int so22 = Integer.parseInt(edsoluonggbong);
                 String edsoluonggnuoc = edsoluongnuoc.getText().toString();
                 int so33 = Integer.parseInt(edsoluonggnuoc);
-
+                String edtngay = edtngaythue.getText().toString();
 
 
                 String giaao = String.valueOf(5);
@@ -203,8 +224,9 @@ loadData();
                 int matthd1 = (int) hs4.get("matthd");
                 String tentthd1 = (String) hs4.get("tentthd");
 
+
                 //set thuộc tính HV
-                hd = new HoaDon(tenkh1,masan,tensan,giasan,makg,khunggio,matthd1,tentthd1,tich,tich2,tich3,tongtientatca1);
+                hd = new HoaDon(tenkh1,masan,tensan,giasan,makg,khunggio,matthd1,tentthd1,tich,tich2,tich3,tongtientatca1,edtngay);
                 //Add hv vào database
                 DataBaSe.getInstance(getApplicationContext()).dao_hoadon().insertHOADON(hd);
                 //View list hv lên màn hìn
@@ -291,5 +313,14 @@ loadData();
     protected void onResume() {
         super.onResume();
     }
-
+    DatePickerDialog.OnDateSetListener mdatetungay = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            myear = i;
+            mmonth = i1;
+            mday = i2;
+            GregorianCalendar c = new GregorianCalendar(myear,mmonth,mday);
+            edtngaythue.setText(simpleDateFormat.format(c.getTime()));
+        }
+    };
 }

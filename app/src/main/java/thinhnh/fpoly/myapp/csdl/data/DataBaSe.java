@@ -12,6 +12,7 @@ import thinhnh.fpoly.myapp.csdl.DAO.DAO_KHUNGGIO;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_LOAISAN;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_NV;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_SAN;
+import thinhnh.fpoly.myapp.csdl.DAO.DAO_TINHTRANG;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_TTHD;
 import thinhnh.fpoly.myapp.csdl.DTO.DichVu;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
@@ -19,10 +20,11 @@ import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 import thinhnh.fpoly.myapp.csdl.DTO.LoaiSan;
 import thinhnh.fpoly.myapp.csdl.DTO.NhanVien;
 import thinhnh.fpoly.myapp.csdl.DTO.San;
+import thinhnh.fpoly.myapp.csdl.DTO.Tinhtrang;
 import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 
 
-@Database(entities = {NhanVien.class, LoaiSan.class, San.class, DichVu.class, KhungGio.class, TrangThaiHoaDon.class, HoaDon.class}, version = 1)
+@Database(entities = {NhanVien.class, LoaiSan.class, San.class, DichVu.class, KhungGio.class, TrangThaiHoaDon.class, HoaDon.class, Tinhtrang.class}, version = 2)
 public abstract class DataBaSe extends RoomDatabase {
     private static final String DATABASE_NAME = "db.db1";
     private static DataBaSe instance;
@@ -41,7 +43,7 @@ public abstract class DataBaSe extends RoomDatabase {
     public abstract DAO_TTHD dao_tthd();
     public  abstract DAO_HOADON dao_hoadon();
 
-
+    public abstract DAO_TINHTRANG dao_tinhtrang();
 
 
 

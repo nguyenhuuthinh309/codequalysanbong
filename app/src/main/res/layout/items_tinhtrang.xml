@@ -7,106 +7,82 @@
 
 
     <LinearLayout
-        android:weightSum="6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
 
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/teal_200"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="10dp"
+        android:gravity="center">
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/item_tenkh"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ten khach hang"
-
+                android:text="Tên Sân:"
+                android:textColor="@color/black"
+                android:textStyle="italic"
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
+                />
             <TextView
-                android:id="@+id/item_ngaythue"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ngay thue"
-
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-
+                android:text="Tình trạng"/>
             <TextView
-                android:id="@+id/item_hdkhunggio"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="khunggio"
-
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
+                android:text="Hoạt động:"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
-                android:id="@+id/item_hdtensan"
+                android:id="@+id/item_tensan_tinhtrang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ten san"
+
 
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-
-
-
+                />
             <TextView
-                android:id="@+id/item_hdnuoc"
+                android:id="@+id/item_tinhtrang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nước"
-
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
+               />
             <TextView
-                android:id="@+id/item_hdbong"
+                android:id="@+id/item_hoatdong_tinhtrang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="bong"
-
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="áo"
+                />
 
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdtrangthai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="trang thai"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdtongtien"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="tong tien"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
         <ImageView
-            android:id="@+id/item_pt_imgtd"
+            android:id="@+id/item_pt_img_tinhtrang"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

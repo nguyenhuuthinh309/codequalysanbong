@@ -27,12 +27,15 @@ public class HoaDon implements Serializable {
     int id_trangthaihd;
     String tentrangthai;
 
-    int bong,nuoc,ao,tongtien;
-
+    int bong,tongtien;
+    int nuoc;
+    int ao;
+    String ngaythue;
     public HoaDon() {
     }
 
-    public HoaDon(String tenkh, int id_san, String tensan, String giasan, int id_khunggio, String khunggio, int id_trangthaihd, String tentrangthai, int bong, int nuoc, int ao, int tongtien) {
+    public HoaDon(String tenkh, int id_san, String tensan, String giasan, int id_khunggio, String khunggio,
+                  int id_trangthaihd, String tentrangthai, int bong, int nuoc, int ao, int tongtien,String ngaythue) {
         this.tenkh = tenkh;
         this.id_san = id_san;
         this.tensan = tensan;
@@ -45,6 +48,15 @@ public class HoaDon implements Serializable {
         this.nuoc = nuoc;
         this.ao = ao;
         this.tongtien = tongtien;
+        this.ngaythue = ngaythue;
+    }
+
+    public String getNgaythue() {
+        return ngaythue;
+    }
+
+    public void setNgaythue(String ngaythue) {
+        this.ngaythue = ngaythue;
     }
 
     public int getId_hoadon() {

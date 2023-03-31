@@ -36,7 +36,7 @@ public class AdapterListView_San extends BaseAdapter {
     LoaiSan loaiSan;
     InteLoadData inteCS;
     ArrayList<HashMap<String,Object>> listHM;
-
+    ArrayList<LoaiSan> listloaisan = new ArrayList<>();
 
     public AdapterListView_San(Context context, InteLoadData inteCS) {
         this.context = context;
@@ -133,19 +133,19 @@ public class AdapterListView_San extends BaseAdapter {
 
 
 
-                                SimpleAdapter simpleAdapter = new SimpleAdapter(context, listHM, android.R.layout.simple_list_item_1, new String[]{"tenloai"}, new int[]{android.R.id.text1});
+                                tensanedit.setText(san.getTensan());
+                                vitriedit.setText(san.getVitrisan());
+                                giaedit.setText(san.getGiasan());
+
+
+
+
+
+                                SimpleAdapter simpleAdapter = new SimpleAdapter(dialogEdit.getContext(),
+                                        getdsloaisan(), android.R.layout.simple_list_item_1,
+                                        new String[]{"tenloai"},new int[]{android.R.id.text1});
                                 spnloaisanedit.setAdapter(simpleAdapter);
 
-                                int index = 0;
-                                int postion = -1;
-                                for (HashMap<String,Object> item: listHM){
-                                    if ((int)item.get("maloai") == san.getId_loaisan()){
-                                        postion = index;
-
-                                    }
-                                    index++;
-                                }
-                                spnloaisanedit.setSelection(postion);
 
 
 
@@ -158,7 +158,9 @@ public class AdapterListView_San extends BaseAdapter {
                                         san.setGiasan(giaedit.getText().toString());
                                         HashMap<String,Object> hs = (HashMap<String, Object>) spnloaisanedit.getSelectedItem();
                                         int maloai = (int) hs.get("maloai");
-                                        san.setId_loaisan(maloai);
+                                        String masan = (String) hs.get("tenloai");
+
+                                        san.setTenloai(masan);
 
 
 
@@ -171,6 +173,7 @@ public class AdapterListView_San extends BaseAdapter {
 
 
                                         dialogEdit.dismiss();
+
 
                                     }
                                 });
@@ -227,5 +230,19 @@ public class AdapterListView_San extends BaseAdapter {
 
 
 
+    }
+    private ArrayList<HashMap<String,Object>> getdsloaisan(){
+        listloaisan = (ArrayList<LoaiSan>) DataBaSe.getInstance(context.getApplicationContext()).dao_loaisan().getAllLoaiSan();
+
+        ArrayList<HashMap<String,Object>> listhm = new ArrayList<>();
+        for(LoaiSan san : listloaisan){
+            HashMap<String , Object> hs = new HashMap<>();
+            hs.put("masan",san.getId_loaisan());
+            hs.put("tensan",san.getTenloai());
+
+            listhm.add(hs);
+
+        }
+        return listhm;
     }
 }

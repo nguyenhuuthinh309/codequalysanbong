@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,14 +31,13 @@ import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class DSNhanVienFragment extends Fragment {
 
-
+    ArrayList<NhanVien> lissonv = new ArrayList<>();
+    NhanVien nv;
     private ListView lisCs;
     private FloatingActionButton floatCs;
-
-     NhanVien nv;
     ArrayList<NhanVien> list = new ArrayList<>();
     AdapterListView_NV adapterListView_nv;
-
+    TextView tvsnv;
      TextInputEditText tkAdd,loaitk;
      TextInputEditText mkAdd;
      TextInputEditText tenAdd;
@@ -80,6 +80,7 @@ public class DSNhanVienFragment extends Fragment {
         lisCs = (ListView) view.findViewById(R.id.lis_cs);
         floatCs = (FloatingActionButton) view.findViewById(R.id.float_cs);
         imageView=new ImageView(getActivity());
+        tvsnv = view.findViewById(R.id.sonv);
     imageView.setImageResource(R.drawable.avtnv);
         loadData();
         floatCs.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +127,7 @@ public class DSNhanVienFragment extends Fragment {
 
             }
         });
+        tvsnv.setText("Số nhân viên là: "+Integer.toString(sonv()));
 
     }
 
@@ -142,5 +144,13 @@ public class DSNhanVienFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] bytes = stream.toByteArray();
         return bytes;
+    }
+    public int sonv(){
+        int x = 1;
+        lissonv =(ArrayList<NhanVien>) DataBaSe.getInstance(getActivity()).dao_nv().getAllNV();
+        for (int i = 0;i<lissonv.toArray().length;i++){
+            x = i+1;
+        }
+        return x;
     }
 }

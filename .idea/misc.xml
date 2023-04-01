@@ -4,12 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/activity_them_hoa_don.xml" value="0.35833333333333334" />
-        <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/dialog_hoadon_edit.xml" value="0.1" />
+        <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/dialog_hoadon_edit.xml" value="0.25" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/dialog_tinhtrang_edit.xml" value="0.3338541666666667" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/dialog_tinhtrangsan.xml" value="0.3338541666666667" />
+        <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_chung.xml" value="0.16296296296296298" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_d_s_dich_vu.xml" value="0.3182291666666667" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_d_s_loai_san.xml" value="0.1" />
-        <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_d_s_nhan_vien.xml" value="0.3182291666666667" />
+        <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_d_s_nhan_vien.xml" value="0.1" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_d_s_san.xml" value="0.1" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_doi_m_k.xml" value="0.1" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_hoa_don.xml" value="0.1" />

@@ -42,7 +42,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      Spinner spnkhunggio;
      TextView giakhunggio;
      Spinner spntensan;
-     TextView giasan1;
+     TextView giasanset;
      EditText edsoluongbong;
      TextView tvgianbong;
      EditText edsoluongnuoc;
@@ -78,7 +78,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spnkhunggio = (Spinner) findViewById(R.id.spnkhunggio);
         timkiemhoadon = (ImageView) findViewById(R.id.timkiemhoadon);
         spntensan = (Spinner) findViewById(R.id.spntensan);
-        giasan1 = (TextView) findViewById(R.id.giasan1);
+        giasanset = (TextView) findViewById(R.id.giasan1);
         edsoluongbong = (EditText) findViewById(R.id.edsoluongbong);
         tvgianbong = (TextView) findViewById(R.id.tvgianbong);
         edsoluongnuoc = (EditText) findViewById(R.id.edsoluongnuoc);
@@ -90,7 +90,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
         btnAddhdd = (Button) findViewById(R.id.btnAddhdd);
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
-        giasan1.setText(san.getGiasan());
+        giasanset.setText(san.getGiasan());
 
         AdapterListView_HoaDon adapterListView_hoaDon;
 
@@ -123,8 +123,8 @@ btnngaythue.setOnClickListener(new View.OnClickListener() {
 
                 HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
                 int makg1 = (int) hs2.get("makhunggio");
-
                 listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getabc(makg1);
+
 loadData();
 
 //                if(DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getAllHOADON().equals(makg1)){
@@ -162,7 +162,7 @@ loadData();
                 int masan = (int) hs1.get("masan");
                 String tensan = (String) hs1.get("tensan");
                 String giasan = (String) hs1.get("giasan");
-                giasan1.setText(giasan);
+
                 int giasan1 = Integer.parseInt(giasan);
 
             int    tongtientatca1 = tich + tich2 + tich3 + giasan1;
@@ -208,13 +208,11 @@ loadData();
 
                 String tensan = (String) hs1.get("tensan");
                 String giasan = (String) hs1.get("giasan");
-                giasan1.setText(giasan);
+
                 int giasan1 = Integer.parseInt(giasan);
 
                 int    tongtientatca1 = tich + tich2 + tich3 + giasan1;
                 texttongtien.setText(String.valueOf(tongtientatca1));
-
-
 
                 HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
                 int makg = (int) hs2.get("makhunggio");
@@ -302,7 +300,7 @@ loadData();
     }
 
     private void loadData() {
-        listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(this).dao_hoadon().getAllHOADON();
+        //listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(this).dao_hoadon().getAllHOADON();
         adapterListView_hoaDon = new AdapterListView_HoaDon(this, this::loadData);
         adapterListView_hoaDon.setdata(listhoadon);
         lv_BT.setAdapter(adapterListView_hoaDon);

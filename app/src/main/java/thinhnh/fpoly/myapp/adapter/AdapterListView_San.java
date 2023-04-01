@@ -237,8 +237,8 @@ public class AdapterListView_San extends BaseAdapter {
         ArrayList<HashMap<String,Object>> listhm = new ArrayList<>();
         for(LoaiSan san : listloaisan){
             HashMap<String , Object> hs = new HashMap<>();
-            hs.put("masan",san.getId_loaisan());
-            hs.put("tensan",san.getTenloai());
+            hs.put("maloai",san.getId_loaisan());
+            hs.put("tenloai",san.getTenloai());
 
             listhm.add(hs);
 

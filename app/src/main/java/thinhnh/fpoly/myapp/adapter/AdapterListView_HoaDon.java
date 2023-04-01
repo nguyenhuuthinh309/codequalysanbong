@@ -110,13 +110,12 @@ public class AdapterListView_HoaDon extends BaseAdapter {
         }
 
         viewHolder.itemTenkh.setText("Khách Hàng:"+hd.getTenkh());
-
         viewHolder.itemHdtensan.setText("Sân:"+hd.getTensan());
         viewHolder.itemHdkhunggio.setText("Khung Giờ:"+hd.getKhunggio());
         viewHolder.itemngaythue.setText("Ngày thuê"+ hd.getNgaythue());
         viewHolder.itemHdnuoc.setText("Nước:"+hd.getNuoc());
-        viewHolder.itemHdbong.setText("Bóng :"+hd.getNuoc());
-        viewHolder.itemHdao.setText("Áo:"+hd.getNuoc());
+        viewHolder.itemHdbong.setText("Bóng :"+hd.getBong());
+        viewHolder.itemHdao.setText("Áo:"+hd.getAo());
         viewHolder.itemHdtrangthai.setText("Trạng Thái:"+hd.getTentrangthai());
         viewHolder.itemHdtongtien.setText("Tổng Tiền:"+hd.getTongtien());
         ViewHolder finalViewHolder = viewHolder;

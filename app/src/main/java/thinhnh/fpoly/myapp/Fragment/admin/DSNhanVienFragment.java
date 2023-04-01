@@ -149,7 +149,12 @@ public class DSNhanVienFragment extends Fragment {
         int x = 1;
         lissonv =(ArrayList<NhanVien>) DataBaSe.getInstance(getActivity()).dao_nv().getAllNV();
         for (int i = 0;i<lissonv.toArray().length;i++){
-            x = i+1;
+            if(lissonv.size()<0){
+                x = 0;
+                if(lissonv.size()>0){
+                    x = i+1;
+                }
+            }
         }
         return x;
     }

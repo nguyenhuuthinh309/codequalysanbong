@@ -32,11 +32,12 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ThemHoaDonActivity extends AppCompatActivity {
-    //jgchgachasvcg21231354644
+    //jgchgachasvcg//uxryctugigyftrdxcv
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
 
     HoaDon hd = new HoaDon();
+    ImageView imgngay;
     San san = new San();
     KhungGio kg;
      TextInputEditText tenkh;
@@ -71,8 +72,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_hoa_don);
-        edtngaythue = findViewById(R.id.edtngaythue);
-        btnngaythue = findViewById(R.id.btnngaythue);
+        imgngay = findViewById(R.id.imgngay);
 
         lv_BT = findViewById(R.id.lis_BT);
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
@@ -91,6 +91,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
         btnAddhdd = (Button) findViewById(R.id.btnAddhdd);
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
+        edtngaythue = (EditText) findViewById(R.id.edtngaythue);
 
 
         AdapterListView_HoaDon adapterListView_hoaDon;
@@ -106,7 +107,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
-btnngaythue.setOnClickListener(new View.OnClickListener() {
+imgngay.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Calendar calendar = Calendar.getInstance();

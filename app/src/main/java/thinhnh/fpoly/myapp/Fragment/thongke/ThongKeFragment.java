@@ -24,7 +24,7 @@ import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 
 public class ThongKeFragment extends Fragment {
-
+//luu huu phuouc
     Button btntungay,btndenngay,btndoanhthu;
     EditText txttungay,txtdenngay;
     TextView tvdoanhthu;
@@ -92,8 +92,8 @@ public class ThongKeFragment extends Fragment {
             public void onClick(View view) {
                 String tong1 = String.valueOf(txttungay.getText().toString());
                 String tong2 = String.valueOf(txtdenngay.getText().toString());
-
-              //  tvdoanhthu.setText(String.valueOf(DataBaSe.getInstance(getContext()).dao_hoadon().getdoanhthu(t).toString()));
+//                String t  = tong1+tong2;
+//                tvdoanhthu.setText(String.valueOf(DataBaSe.getInstance(getContext()).dao_hoadon().getdoanhthu(t).toString()));
                 // tvdoanhthu.setText(Integer.toString(hoaDon.getTongtien()));
             }
         });

@@ -164,7 +164,7 @@ public class AdapterListView_HoaDon extends BaseAdapter {
                                 Button   btnAddhddedit = (Button) dialogEdit.findViewById(R.id.btnAddhddedit);
                                 Button    btnHuyAddhddedit = (Button) dialogEdit.findViewById(R.id.btnHuyAddhddedit);
                                 EditText ngaythue = (EditText) dialogEdit.findViewById(R.id.edtngaythueedit);
-                                Button btnngaythue = (Button) dialogEdit.findViewById(R.id.btnngaythueedit);
+                                ImageView btnngaythue = (ImageView) dialogEdit.findViewById(R.id.imgngayedit);
                                 DatePickerDialog.OnDateSetListener mdatetungay = new DatePickerDialog.OnDateSetListener() {
                                     ViewHolder vir = null;
                                     @Override

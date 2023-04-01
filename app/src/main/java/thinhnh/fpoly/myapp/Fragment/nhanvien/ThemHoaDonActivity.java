@@ -32,6 +32,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ThemHoaDonActivity extends AppCompatActivity {
+    //jgchgachasvcgdsvchgsdvchsdvchgsdvcghscvhsdcvhjsdyvhjcsdvhjycdsc
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
 
@@ -90,7 +91,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
         btnAddhdd = (Button) findViewById(R.id.btnAddhdd);
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
-        giasanset.setText(san.getGiasan());
+
 
         AdapterListView_HoaDon adapterListView_hoaDon;
 
@@ -152,8 +153,7 @@ loadData();
                 int so2 = Integer.parseInt(giabong);
                 String gianuoc = String.valueOf(10);
                 int so3 = Integer.parseInt(gianuoc);
-                int a  = hd.getAo();
-                int aogia = a* so11;
+
                 int tich = so1 *so11;
                 int tich2 = so2 *so22;
                 int tich3 = so3 *so33;

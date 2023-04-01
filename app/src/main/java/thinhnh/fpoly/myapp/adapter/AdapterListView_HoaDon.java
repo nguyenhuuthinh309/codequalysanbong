@@ -39,7 +39,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 import thinhnh.fpoly.myapp.interfaces.InteLoadData;
 
-public class AdapterListView_HoaDon extends BaseAdapter {
+public class  AdapterListView_HoaDon extends BaseAdapter {
     ArrayList<HoaDon> list = new ArrayList<>();
     ArrayList<San> listSan = new ArrayList<>();
     ArrayList<KhungGio> listkhunggio = new ArrayList<>();

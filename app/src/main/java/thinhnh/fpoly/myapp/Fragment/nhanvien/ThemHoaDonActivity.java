@@ -128,10 +128,7 @@ btnngaythue.setOnClickListener(new View.OnClickListener() {
 
 loadData();
 
-//                if(DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getAllHOADON().equals(makg1)){
-//                    loadData();
-//                    giasan1.setText("abcd");
-//                }
+
 
             }
         });

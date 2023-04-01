@@ -32,13 +32,13 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ThemHoaDonActivity extends AppCompatActivity {
-    //jgchgachasvcgdsvchgsdvchsdvchgsdvcghscvhsdcvhjsdyvhjcsdvhjycdsc
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
 
     HoaDon hd = new HoaDon();
     San san = new San();
     KhungGio kg;
+    ImageView imgthemngay;
      TextInputEditText tenkh;
      Spinner spnkhunggio;
      TextView giakhunggio;
@@ -55,7 +55,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      Spinner spntrangthai;
      Button btnAddhdd;
      EditText edtngaythue;
-     Button btnngaythue;
+
      Button btnHuyAddhdd;
      ImageView timkiemhoadon;
     ListView lv_BT;
@@ -72,7 +72,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_hoa_don);
         edtngaythue = findViewById(R.id.edtngaythue);
-        btnngaythue = findViewById(R.id.btnngaythue);
+        imgthemngay = findViewById(R.id.imgngay);
 
         lv_BT = findViewById(R.id.lis_BT);
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
@@ -106,18 +106,18 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
-btnngaythue.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Calendar calendar = Calendar.getInstance();
-        myear = calendar.get(Calendar.YEAR);
-        mmonth= calendar.get(Calendar.MONTH);
-        mday = calendar.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog dialog = new DatePickerDialog(ThemHoaDonActivity.this
-                ,0,mdatetungay,myear,mmonth,mday);
-        dialog.show();
-    }
-});
+        imgthemngay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                myear = calendar.get(Calendar.YEAR);
+                mmonth= calendar.get(Calendar.MONTH);
+                mday = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ThemHoaDonActivity.this
+                        ,0,mdatetungay,myear,mmonth,mday);
+                dialog.show();
+            }
+        });
         timkiemhoadon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'thinhnh.fpoly.myapp'
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         applicationId "thinhnh.fpoly.myapp"

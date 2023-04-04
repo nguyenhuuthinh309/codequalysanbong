@@ -18,6 +18,8 @@ public class San {
      int id_loaisan;
      String tenloai;
 
+
+
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] avatar_san;
 

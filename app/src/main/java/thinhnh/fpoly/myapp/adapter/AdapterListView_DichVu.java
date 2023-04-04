@@ -71,7 +71,8 @@ public class AdapterListView_DichVu extends BaseAdapter {
 
             viewHolder.itemTendv = (TextView) view.findViewById(R.id.item_tendv);
             viewHolder.itemGiaDV = (TextView) view.findViewById(R.id.item_giaDV);
-            viewHolder.itemPtImgtd = (ImageView) view.findViewById(R.id.item_pt_imgtd);
+            viewHolder.itemsua = (ImageView) view.findViewById(R.id.itemsua);
+            viewHolder.itemxoa = (ImageView) view.findViewById(R.id.itemxoa);
 
             view.setTag(viewHolder);
         } else {
@@ -81,79 +82,70 @@ public class AdapterListView_DichVu extends BaseAdapter {
         viewHolder.itemTendv.setText(dv.getTendv());
         viewHolder.itemGiaDV.setText(dv.getGiadv());
         ViewHolder finalViewHolder = viewHolder;
-        viewHolder.itemPtImgtd.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu=new PopupMenu(context, finalViewHolder.itemPtImgtd);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_for_icon,popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("DELETE");
+                builder.setMessage("Do you want delete ?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-
-                        switch (menuItem.getItemId()){
-                            case R.id.menusua:
-                                Dialog dialogEdit = new Dialog(context);
-                                dialogEdit.setContentView(R.layout.dialog_dv_edit);
-
-
-
-
-
-                                TextInputEditText  tendvedit = (TextInputEditText) dialogEdit.findViewById(R.id.tendvedit);
-                                TextInputEditText   giadvedit = (TextInputEditText) dialogEdit.findViewById(R.id.giadvedit);
-                                Button  btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);
-                                Button  btnHuyEditls = (Button) dialogEdit.findViewById(R.id.btnHuyEditls);
-
-
-
-                                tendvedit.setText(dv.getTendv());
-                                giadvedit.setText(dv.getGiadv());
-
-                                btneditls.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-              dv.setTendv(tendvedit.getText().toString());
-              dv.setGiadv(giadvedit.getText().toString());
-
-
-                                        DataBaSe.getInstance(context).dao_dv().updataDV(dv);
-                                        intels.loadData();
-                                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                btnHuyEditls.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                dialogEdit.show();
-                                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menuxoa:
-                                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                                builder.setTitle("DELETE");
-                                builder.setMessage("Do you want delete ?");
-                                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        DataBaSe.getInstance(context).dao_dv().deleteDV(dv);
-                                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
-                                        intels.loadData();
-                                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                builder.setNegativeButton("NO",null);
-                                builder.show();
-                                break;
-                        }
-                        return true;
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DataBaSe.getInstance(context).dao_dv().deleteDV(dv);
+                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
+                        intels.loadData();
+                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
                     }
                 });
-                popupMenu.show();
+                builder.setNegativeButton("NO",null);
+                builder.show();
             }
         });
+        viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialogEdit = new Dialog(context);
+                dialogEdit.setContentView(R.layout.dialog_dv_edit);
+
+
+
+
+
+                TextInputEditText  tendvedit = (TextInputEditText) dialogEdit.findViewById(R.id.tendvedit);
+                TextInputEditText   giadvedit = (TextInputEditText) dialogEdit.findViewById(R.id.giadvedit);
+                Button  btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);
+                Button  btnHuyEditls = (Button) dialogEdit.findViewById(R.id.btnHuyEditls);
+
+
+
+                tendvedit.setText(dv.getTendv());
+                giadvedit.setText(dv.getGiadv());
+
+                btneditls.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dv.setTendv(tendvedit.getText().toString());
+                        dv.setGiadv(giadvedit.getText().toString());
+
+
+                        DataBaSe.getInstance(context).dao_dv().updataDV(dv);
+                        intels.loadData();
+                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
+                        dialogEdit.dismiss();
+                    }
+                });
+                btnHuyEditls.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogEdit.dismiss();
+                    }
+                });
+                dialogEdit.show();
+                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
 
     }
@@ -163,7 +155,7 @@ public class AdapterListView_DichVu extends BaseAdapter {
 
          TextView itemTendv;
          TextView itemGiaDV;
-         ImageView itemPtImgtd;
+         ImageView itemsua,itemxoa;
 
 
 

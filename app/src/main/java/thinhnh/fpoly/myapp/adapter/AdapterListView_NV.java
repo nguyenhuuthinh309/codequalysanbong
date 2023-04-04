@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,7 +72,10 @@ public class AdapterListView_NV extends BaseAdapter {
             viewHolder.itemTennv = (TextView) convertView.findViewById(R.id.item_tennv);
             viewHolder.itemSdtnv = (TextView)  convertView.findViewById(R.id.item_sdtnv);
             viewHolder.avata = convertView.findViewById(R.id.item_pt_avata);
-            viewHolder.itemPtImgtd = (ImageView)  convertView.findViewById(R.id.item_pt_imgtd);
+            viewHolder.itemsua = (ImageView)  convertView.findViewById(R.id.itemsua);
+            viewHolder.itemxoa = (ImageView)  convertView.findViewById(R.id.itemxoa);
+
+
 
             convertView.setTag(viewHolder);
         } else {
@@ -86,79 +90,72 @@ public class AdapterListView_NV extends BaseAdapter {
         viewHolder.itemTennv.setText(nv.getTen_NV());
         viewHolder.itemSdtnv.setText(nv.getSdt_NV());
         ViewHolder finalViewHolder = viewHolder;
-        viewHolder.itemPtImgtd.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                PopupMenu menu=new PopupMenu(context, finalViewHolder.itemPtImgtd);
-                menu.getMenuInflater().inflate(R.menu.menu_for_icon,menu.getMenu());
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public void onClick(View view) {
+                Dialog dialogEdit = new Dialog(context);
+                dialogEdit.setContentView(R.layout.dialog_nv_edit);
+                Button btnEditHV = dialogEdit.findViewById(R.id.btnedit_HV);
+                Button btnHuyEditHV = dialogEdit.findViewById(R.id.btnHuyEditHV);
+
+
+                TextInputEditText  tkEdit = (TextInputEditText) dialogEdit.findViewById(R.id.tk_edit);
+                TextInputEditText  mkEdit = (TextInputEditText) dialogEdit.findViewById(R.id.mk_edit);
+                TextInputEditText   tenEdit = (TextInputEditText) dialogEdit.findViewById(R.id.ten_edit);
+                TextInputEditText  sdtEdit = (TextInputEditText) dialogEdit.findViewById(R.id.sdt_edit);
+
+
+
+                tkEdit.setText(nv.getTk_NV());
+                mkEdit.setText(nv.getMk_NV());
+                tenEdit.setText(nv.getTen_NV());
+                sdtEdit.setText(nv.getSdt_NV());
+
+                btnEditHV.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        switch (menuItem.getItemId()){
-                            case R.id.menusua:
-                                Dialog dialogEdit = new Dialog(context);
-                                dialogEdit.setContentView(R.layout.dialog_nv_edit);
-                                Button btnEditHV = dialogEdit.findViewById(R.id.btnedit_HV);
-                                Button btnHuyEditHV = dialogEdit.findViewById(R.id.btnHuyEditHV);
+                    public void onClick(View v) {
 
+                        nv.setTk_NV(tkEdit.getText().toString());
+                        nv.setMk_NV(mkEdit.getText().toString());
+                        nv.setTen_NV(tenEdit.getText().toString());
+                        nv.setSdt_NV(sdtEdit.getText().toString());
 
-                                TextInputEditText  tkEdit = (TextInputEditText) dialogEdit.findViewById(R.id.tk_edit);
-                                TextInputEditText  mkEdit = (TextInputEditText) dialogEdit.findViewById(R.id.mk_edit);
-                                TextInputEditText   tenEdit = (TextInputEditText) dialogEdit.findViewById(R.id.ten_edit);
-                                TextInputEditText  sdtEdit = (TextInputEditText) dialogEdit.findViewById(R.id.sdt_edit);
-                                TextInputEditText    cccdEdit = (TextInputEditText) dialogEdit.findViewById(R.id.cccd_edit);
-
-
-                                tkEdit.setText(nv.getTk_NV());
-                                mkEdit.setText(nv.getMk_NV());
-                                tenEdit.setText(nv.getTen_NV());
-                                sdtEdit.setText(nv.getSdt_NV());
-
-                                btnEditHV.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        nv.setTk_NV(tkEdit.getText().toString());
-                                        nv.setMk_NV(mkEdit.getText().toString());
-                                        nv.setTen_NV(tenEdit.getText().toString());
-                                        nv.setSdt_NV(sdtEdit.getText().toString());
-
-                                        DataBaSe.getInstance(context).dao_nv().updataNV(nv);
-                                        inteloadData.loadData();
-                                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                btnHuyEditHV.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                dialogEdit.show();
-                                break;
-                            case R.id.menuxoa:
-                                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                                builder.setTitle("DELETE");
-                                builder.setMessage("Do you want delete?");
-                                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        DataBaSe.getInstance(context).dao_nv().deleteHV(nv);
-                                        Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
-                                        inteloadData.loadData();
-                                    }
-                                });
-                                builder.setNegativeButton("NO",null);
-                                builder.show();
-                                break;
-                        }
-                        return true;
+                        DataBaSe.getInstance(context).dao_nv().updataNV(nv);
+                        inteloadData.loadData();
+                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
+                        dialogEdit.dismiss();
                     }
                 });
-                menu.show();
+                btnHuyEditHV.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogEdit.dismiss();
+                    }
+                });
+                dialogEdit.show();
             }
         });
+
+        viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("DELETE");
+                builder.setMessage("Do you want delete?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DataBaSe.getInstance(context).dao_nv().deleteHV(nv);
+                        Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
+                        inteloadData.loadData();
+                    }
+                });
+                builder.setNegativeButton("NO",null);
+                builder.show();
+            }
+        });
+
         return convertView;
     }
 
@@ -166,9 +163,9 @@ public class AdapterListView_NV extends BaseAdapter {
 
          TextView itemTennv;
          TextView itemSdtnv;
-         ImageView avata,itemPtImgtd;
+         ImageView avata,itemsua,itemxoa;
 
-
+           LinearLayout shownv;
 
     }
 }

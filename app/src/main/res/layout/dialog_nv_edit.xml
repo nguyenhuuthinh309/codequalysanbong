@@ -68,25 +68,11 @@
             android:id="@+id/sdt_edit"
             android:textColorHint="@color/mau_nen"
 
-            android:hint="Họ Và Tên"
+            android:hint="Số Điện Thoại"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/cccd_edit"
-            android:textColorHint="@color/mau_nen"
 
-            android:hint="CCCD"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

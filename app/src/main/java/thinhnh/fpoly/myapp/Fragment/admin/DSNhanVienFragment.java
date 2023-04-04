@@ -127,7 +127,7 @@ public class DSNhanVienFragment extends Fragment {
 
             }
         });
-        tvsnv.setText("Số nhân viên là: "+Integer.toString(sonv()));
+        tvsnv.setText("Số Lượng : "+ Integer.toString(sonv()));
 
     }
 

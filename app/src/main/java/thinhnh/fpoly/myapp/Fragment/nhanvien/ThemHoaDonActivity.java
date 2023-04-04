@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -55,7 +57,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
      TextView texttongtien;
      Spinner spntrangthai;
      Button btnAddhdd;
-     EditText edtngaythue;
+     TextView edtngaythue;
      Button btnngaythue;
      Button btnHuyAddhdd;
      ImageView timkiemhoadon;
@@ -91,7 +93,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
         btnAddhdd = (Button) findViewById(R.id.btnAddhdd);
         btnHuyAddhdd = (Button) findViewById(R.id.btnHuyAddhdd);
-        edtngaythue = (EditText) findViewById(R.id.edtngaythue);
+        edtngaythue = (TextView) findViewById(R.id.edtngaythue);
 
 
         AdapterListView_HoaDon adapterListView_hoaDon;
@@ -227,7 +229,7 @@ loadData();
                 DataBaSe.getInstance(getApplicationContext()).dao_hoadon().insertHOADON(hd);
                 //View list hv lên màn hìn
                 // Khởi tạo Fragment
-           finish();
+                reFragment(HoaDonFragment.newInstance());
             }
         });
         btnHuyAddhdd.setOnClickListener(new View.OnClickListener() {
@@ -319,4 +321,10 @@ loadData();
             edtngaythue.setText(simpleDateFormat.format(c.getTime()));
         }
     };
+
+    public void reFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_ly_mhAdmin, fragment);
+        transaction.commit();
+    }
 }

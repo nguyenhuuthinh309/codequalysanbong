@@ -80,7 +80,8 @@ public class AdapterListView_San extends BaseAdapter {
             viewHolder.itemVitri = (TextView) view.findViewById(R.id.item_vitri);
             viewHolder.itemGia = (TextView) view.findViewById(R.id.item_gia);
             viewHolder.avt = view.findViewById(R.id.item_avata_san);
-            viewHolder.itemPtImgtd = (ImageView) view.findViewById(R.id.item_pt_imgtd);
+            viewHolder.itemsua = (ImageView) view.findViewById(R.id.itemsua);
+            viewHolder.itemxoa = (ImageView) view.findViewById(R.id.itemxoa);
             viewHolder.itemtenloaisan = (TextView) view.findViewById(R.id.item_tenloaisan);
 
 
@@ -102,113 +103,102 @@ public class AdapterListView_San extends BaseAdapter {
 
         ViewHolder finalViewHolder = viewHolder;
 
-
-        viewHolder.itemPtImgtd.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu=new PopupMenu(context, finalViewHolder.itemPtImgtd);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_for_icon,popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public void onClick(View view) {
+                Dialog dialogEdit = new Dialog(context);
+                dialogEdit.setContentView(R.layout.dialog_san_edit);
+
+
+                TextInputEditText   tensanedit = (TextInputEditText) dialogEdit.findViewById(R.id.tensanedit);
+                TextInputEditText   vitriedit = (TextInputEditText) dialogEdit.findViewById(R.id.vitriedit);
+                TextInputEditText    giaedit = (TextInputEditText) dialogEdit.findViewById(R.id.giaedit);
+                Spinner  spnloaisanedit = (Spinner) dialogEdit.findViewById(R.id.spnloaisanedit);
+                Button btneditcs = (Button) dialogEdit.findViewById(R.id.btneditcs);
+                Button  btnHuyEditcs = (Button) dialogEdit.findViewById(R.id.btnHuyEditcs);
+
+
+                tensanedit.setText(san.getTensan());
+                vitriedit.setText(san.getVitrisan());
+                giaedit.setText(san.getGiasan());
+
+
+
+
+                tensanedit.setText(san.getTensan());
+                vitriedit.setText(san.getVitrisan());
+                giaedit.setText(san.getGiasan());
+
+
+
+
+
+                SimpleAdapter simpleAdapter = new SimpleAdapter(dialogEdit.getContext(),
+                        getdsloaisan(), android.R.layout.simple_list_item_1,
+                        new String[]{"tenloai"},new int[]{android.R.id.text1});
+                spnloaisanedit.setAdapter(simpleAdapter);
+
+
+
+
+                btneditcs.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
+                    public void onClick(View v) {
 
-                        switch (menuItem.getItemId()){
-                            case R.id.menusua:
-                                Dialog dialogEdit = new Dialog(context);
-                                dialogEdit.setContentView(R.layout.dialog_san_edit);
+                        san.setTensan(tensanedit.getText().toString());
+                        san.setVitrisan(vitriedit.getText().toString());
+                        san.setGiasan(giaedit.getText().toString());
+                        HashMap<String,Object> hs = (HashMap<String, Object>) spnloaisanedit.getSelectedItem();
+                        int maloai = (int) hs.get("maloai");
+                        String masan = (String) hs.get("tenloai");
 
-
-                                TextInputEditText   tensanedit = (TextInputEditText) dialogEdit.findViewById(R.id.tensanedit);
-                                TextInputEditText   vitriedit = (TextInputEditText) dialogEdit.findViewById(R.id.vitriedit);
-                                TextInputEditText    giaedit = (TextInputEditText) dialogEdit.findViewById(R.id.giaedit);
-                                Spinner  spnloaisanedit = (Spinner) dialogEdit.findViewById(R.id.spnloaisanedit);
-                                Button btneditcs = (Button) dialogEdit.findViewById(R.id.btneditcs);
-                                Button  btnHuyEditcs = (Button) dialogEdit.findViewById(R.id.btnHuyEditcs);
-
-
-                                tensanedit.setText(san.getTensan());
-                                vitriedit.setText(san.getVitrisan());
-                                giaedit.setText(san.getGiasan());
+                        san.setTenloai(masan);
 
 
 
+                        DataBaSe.getInstance(context).dao_san().updataSan(san);
 
-                                tensanedit.setText(san.getTensan());
-                                vitriedit.setText(san.getVitrisan());
-                                giaedit.setText(san.getGiasan());
-
+                        inteCS.loadData();
 
 
+                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
 
 
-                                SimpleAdapter simpleAdapter = new SimpleAdapter(dialogEdit.getContext(),
-                                        getdsloaisan(), android.R.layout.simple_list_item_1,
-                                        new String[]{"tenloai"},new int[]{android.R.id.text1});
-                                spnloaisanedit.setAdapter(simpleAdapter);
+                        dialogEdit.dismiss();
 
 
-
-
-                                btneditcs.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        san.setTensan(tensanedit.getText().toString());
-                                        san.setVitrisan(vitriedit.getText().toString());
-                                        san.setGiasan(giaedit.getText().toString());
-                                        HashMap<String,Object> hs = (HashMap<String, Object>) spnloaisanedit.getSelectedItem();
-                                        int maloai = (int) hs.get("maloai");
-                                        String masan = (String) hs.get("tenloai");
-
-                                        san.setTenloai(masan);
-
-
-
-                                        DataBaSe.getInstance(context).dao_san().updataSan(san);
-
-                                        inteCS.loadData();
-
-
-                                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
-
-
-                                        dialogEdit.dismiss();
-
-
-                                    }
-                                });
-                                btnHuyEditcs.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                dialogEdit.show();
-                                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menuxoa:
-                                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                                builder.setTitle("DELETE");
-                                builder.setMessage("Do you want delete ?");
-                                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        DataBaSe.getInstance(context).dao_san().deleteSan(san);
-                                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
-                                        inteCS.loadData();
-                                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                builder.setNegativeButton("NO",null);
-                                builder.show();
-                                break;
-                        }
-                        return true;
                     }
                 });
-                popupMenu.show();
+                btnHuyEditcs.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogEdit.dismiss();
+                    }
+                });
+                dialogEdit.show();
+                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
             }
         });
+viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        builder.setTitle("DELETE");
+        builder.setMessage("Do you want delete ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DataBaSe.getInstance(context).dao_san().deleteSan(san);
+                Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
+                inteCS.loadData();
+                Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("NO",null);
+        builder.show();
+    }
+});
+
         return view;
 
     }
@@ -219,7 +209,7 @@ public class AdapterListView_San extends BaseAdapter {
          TextView itemVitri;
          TextView itemGia;
          TextView itemLoaisan, itemtenloaisan;
-         ImageView avt, itemPtImgtd;
+         ImageView avt, itemsua,itemxoa;
 
 
 

@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,7 +20,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import thinhnh.fpoly.myapp.Fragment.FragmentChung;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.DoiMKFragment;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.ThongTinFragment;
 import thinhnh.fpoly.myapp.Fragment.admin.DSDichVuFragment;
@@ -79,7 +76,7 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
         tvNavChucvu = navL.getHeaderView(0).findViewById(R.id.tv_nav_chucvu);
         imgNavAvata = navL.getHeaderView(0).findViewById(+R.id.img_nav_avata);
         navL.setNavigationItemSelectedListener(this);
-        reFragment(FragmentChung.newInstance());
+        reFragment(HoaDonFragment.newInstance());
 
 
 
@@ -90,7 +87,7 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
             tvNavChucvu.setText("Admin123@admin.com");
 
             Menu menu = navL.getMenu();
-            menu.findItem(R.id.hoadon).setVisible(false);
+
             menu.findItem(R.id.baocao).setVisible(false);
             menu.findItem(R.id.timkiem).setVisible(false);
             menu.findItem(R.id.tt).setVisible(false);

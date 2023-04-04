@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,7 +71,9 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
 
 
             viewHolder.itemTenloai = (TextView) view.findViewById(R.id.item_tenloai);
-            viewHolder.itemPtImgtd = (ImageView) view.findViewById(R.id.item_pt_imgtd);
+            viewHolder.avata = (ImageView) view.findViewById(R.id.item_avata_loaisan);
+            viewHolder.itemsua = (ImageView) view.findViewById(R.id.itemsua);
+            viewHolder.itemxoa = (ImageView) view.findViewById(R.id.itemxoa);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -77,72 +81,63 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
 
         viewHolder.itemTenloai.setText(ls.getTenloai());
         ViewHolder finalViewHolder = viewHolder;
-        viewHolder.itemPtImgtd.setOnClickListener(new View.OnClickListener() {
+
+        viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu=new PopupMenu(context, finalViewHolder.itemPtImgtd);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_for_icon,popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public void onClick(View view) {
+                Dialog dialogEdit = new Dialog(context);
+                dialogEdit.setContentView(R.layout.dialog_loaisan_edit);
+
+
+
+                TextInputEditText   loaisanedit = (TextInputEditText) dialogEdit.findViewById(R.id.loaisanedit);
+                Button    btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);
+                Button   btnHuyEditls = (Button) dialogEdit.findViewById(R.id.btnHuyEditls);
+
+                loaisanedit.setText(ls.getTenloai());
+
+                btneditls.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-
-                        switch (menuItem.getItemId()){
-                            case R.id.menusua:
-                                Dialog dialogEdit = new Dialog(context);
-                                dialogEdit.setContentView(R.layout.dialog_loaisan_edit);
+                    public void onClick(View v) {
+                        ls.setTenloai(loaisanedit.getText().toString());
 
 
-
-                                TextInputEditText   loaisanedit = (TextInputEditText) dialogEdit.findViewById(R.id.loaisanedit);
-                                Button    btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);
-                                Button   btnHuyEditls = (Button) dialogEdit.findViewById(R.id.btnHuyEditls);
-
-                                loaisanedit.setText(ls.getTenloai());
-
-                                btneditls.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-              ls.setTenloai(loaisanedit.getText().toString());
-
-
-                                        DataBaSe.getInstance(context).dao_loaisan().updataLoaiSan(ls);
-                                        intels.loadData();
-                                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                btnHuyEditls.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dialogEdit.dismiss();
-                                    }
-                                });
-                                dialogEdit.show();
-                                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.menuxoa:
-                                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                                builder.setTitle("DELETE");
-                                builder.setMessage("Do you want delete ?");
-                                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        DataBaSe.getInstance(context).dao_loaisan().deleteLoaiSan(ls);
-                                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
-                                        intels.loadData();
-                                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                builder.setNegativeButton("NO",null);
-                                builder.show();
-                                break;
-                        }
-                        return true;
+                        DataBaSe.getInstance(context).dao_loaisan().updataLoaiSan(ls);
+                        intels.loadData();
+                        Toast.makeText(context, "Đã sửa thành công!!!", Toast.LENGTH_SHORT).show();
+                        dialogEdit.dismiss();
                     }
                 });
-                popupMenu.show();
+                btnHuyEditls.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogEdit.dismiss();
+                    }
+                });
+                dialogEdit.show();
+                Toast.makeText(context, " sửa", Toast.LENGTH_SHORT).show();
             }
         });
+        viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                builder.setTitle("DELETE");
+                builder.setMessage("Do you want delete ?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DataBaSe.getInstance(context).dao_loaisan().deleteLoaiSan(ls);
+                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
+                        intels.loadData();
+                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("NO",null);
+                builder.show();
+            }
+        });
+
         return view;
 
     }
@@ -152,9 +147,9 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
 
 
          TextView itemTenloai;
-         ImageView itemPtImgtd;
+         ImageView itemsua,itemxoa;
 
-
+       ImageView avata;
 
 
 

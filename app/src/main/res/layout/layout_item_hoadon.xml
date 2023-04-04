@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
 
     <LinearLayout
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_background_item"
         android:weightSum="6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +17,7 @@
         >
 
         <LinearLayout
+            android:layout_margin="15dp"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="wrap_content"
@@ -28,29 +32,10 @@
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"/>
             <TextView
-                android:id="@+id/item_ngaythue"
+                android:id="@+id/item_sdtkh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ngay thue"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:id="@+id/item_hdkhunggio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="khunggio"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdtensan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ten san"
+                android:text="sdt khach hang"
 
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
@@ -58,29 +43,14 @@
 
 
 
-            <TextView
-                android:id="@+id/item_hdnuoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nước"
 
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdbong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="bong"
 
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
+
             <TextView
-                android:id="@+id/item_hdao"
+                android:id="@+id/item_hdtongtien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="áo"
+                android:text="tong tien"
 
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
@@ -94,25 +64,27 @@
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdtongtien"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="tong tien"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
-
         </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/item_pt_imgtd"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_optionmenu"
+            android:id="@+id/itemsua"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_background_item2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_edit"
             />
+        <ImageView
+            android:id="@+id/itemxoa"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_background_item1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_delete"/>
     </LinearLayout>
 
-
+    </LinearLayout>
 </LinearLayout>

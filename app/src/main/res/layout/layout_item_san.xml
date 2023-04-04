@@ -39,15 +39,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+
                     android:id="@+id/item_tensan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tên sân"
-
+                    android:textColor="@color/black"
                     android:fontFamily="@font/robito_indam"
                     android:textSize="15dp"
                 />
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/item_vitri"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,6 +57,7 @@
                     android:textSize="15dp"
                     android:text="vị trí"/>
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/item_gia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
                     android:text="giá"/>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/item_tenloaisan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,13 +74,28 @@
                     android:textSize="15dp"
                     android:text=" tên loai san"/>
             </LinearLayout>
-            <ImageView
-                android:id="@+id/item_pt_imgtd"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_optionmenu"
-                />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/itemsua"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_background_item2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_edit"
+                    />
+                <ImageView
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/itemxoa"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_background_item1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+
+                    android:src="@drawable/ic_delete"/>
+            </LinearLayout>
         </LinearLayout>
 
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragment.admin.DSNhanVienFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_background_item2"
+        android:paddingLeft="40dp"
+        android:paddingTop="15dp"
+        android:text="Tổng Doanh Thu"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="120dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <Button
+                    android:id="@+id/btnTongDoanhThu"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/mau_nen"
+                    android:text="Tổng doanh thu"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:id="@+id/tv_doanhthu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/robito_indam"
+                    android:gravity="center|right"
+                    android:text=""
+                    android:textColor="@color/mau_nen"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/robito_indam"
+                    android:gravity="center|left"
+                    android:text="VNĐ"
+                    android:textColor="@color/mau_nen"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+
+
+
+</RelativeLayout>

@@ -16,6 +16,7 @@ public class HoaDon implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id_hoadon;
     String tenkh;
+    String sdtkh;
     @ColumnInfo(name = "id_san")
     int id_san;
     String tensan;
@@ -34,9 +35,10 @@ public class HoaDon implements Serializable {
     public HoaDon() {
     }
 
-    public HoaDon(String tenkh, int id_san, String tensan, String giasan, int id_khunggio, String khunggio,
-                  int id_trangthaihd, String tentrangthai, int bong, int nuoc, int ao, int tongtien,String ngaythue) {
+    public HoaDon(String tenkh, String sdtkh, int id_san, String tensan, String giasan, int id_khunggio, String khunggio, int id_trangthaihd, String tentrangthai,int ao, int bong, int nuoc, int tongtien , String ngaythue) {
+
         this.tenkh = tenkh;
+        this.sdtkh = sdtkh;
         this.id_san = id_san;
         this.tensan = tensan;
         this.giasan = giasan;
@@ -45,10 +47,18 @@ public class HoaDon implements Serializable {
         this.id_trangthaihd = id_trangthaihd;
         this.tentrangthai = tentrangthai;
         this.bong = bong;
+        this.tongtien = tongtien;
         this.nuoc = nuoc;
         this.ao = ao;
-        this.tongtien = tongtien;
         this.ngaythue = ngaythue;
+    }
+
+    public String getSdtkh() {
+        return sdtkh;
+    }
+
+    public void setSdtkh(String sdtkh) {
+        this.sdtkh = sdtkh;
     }
 
     public String getNgaythue() {

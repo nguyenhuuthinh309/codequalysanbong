@@ -42,7 +42,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
     ImageView imgngay;
     San san = new San();
     KhungGio kg;
-     TextInputEditText tenkh;
+     TextInputEditText tenkh,sdtkh;
      Spinner spnkhunggio;
      TextView giakhunggio;
      Spinner spntensan;
@@ -70,6 +70,8 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
     AdapterListView_HoaDon adapterListView_hoaDon;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +80,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         lv_BT = findViewById(R.id.lis_BT);
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
+        sdtkh = (TextInputEditText) findViewById(R.id.sdtkh);
         spnkhunggio = (Spinner) findViewById(R.id.spnkhunggio);
         timkiemhoadon = (ImageView) findViewById(R.id.timkiemhoadon);
         spntensan = (Spinner) findViewById(R.id.spntensan);
@@ -109,6 +112,7 @@ public class ThemHoaDonActivity extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
+
 imgngay.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -176,6 +180,7 @@ loadData();
             @Override
             public void onClick(View v) {
                 String tenkh1 = tenkh.getText().toString();
+                String sdtkh1 = sdtkh.getText().toString();
 
                 String edsoluonggao = edsoluongao.getText().toString();
                 int so11 = Integer.parseInt(edsoluonggao);
@@ -224,12 +229,12 @@ loadData();
 
 
                 //set thuộc tính HV
-                hd = new HoaDon(tenkh1,masan,tensan,giasan,makg,khunggio,matthd1,tentthd1,tich,tich2,tich3,tongtientatca1,edtngay);
+                hd = new HoaDon(tenkh1,sdtkh1,masan,tensan,giasan,makg,khunggio,matthd1,tentthd1,tich,tich2,tich3,tongtientatca1,edtngay);
                 //Add hv vào database
                 DataBaSe.getInstance(getApplicationContext()).dao_hoadon().insertHOADON(hd);
                 //View list hv lên màn hìn
                 // Khởi tạo Fragment
-                reFragment(HoaDonFragment.newInstance());
+               finish();
             }
         });
         btnHuyAddhdd.setOnClickListener(new View.OnClickListener() {
@@ -294,10 +299,6 @@ loadData();
 
     }
 
-    public void loadData(int id) {
-
-
-    }
 
     private void loadData() {
         //listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(this).dao_hoadon().getAllHOADON();
@@ -327,4 +328,6 @@ loadData();
         transaction.replace(R.id.frame_ly_mhAdmin, fragment);
         transaction.commit();
     }
+
+
 }

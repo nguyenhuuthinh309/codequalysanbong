@@ -17,7 +17,7 @@
         android:background="@drawable/shape_background_item2"
         android:paddingLeft="40dp"
         android:paddingTop="15dp"
-        android:text="Thông Tin"
+        android:text="Doanh Thu Theo Ngày"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -39,11 +39,7 @@
             android:layout_marginBottom="10dp"
             >
 
-            <ImageView
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/img_avata"/>
+
         </LinearLayout>
         <RelativeLayout
             android:background="@color/white"
@@ -114,25 +110,9 @@
                 android:id="@+id/l4"
                 android:layout_below="@+id/l3"
                 >
-                <Button
-                    android:id="@+id/btnDoanhThu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_centerHorizontal="true"
-                    android:backgroundTint="@color/mau_nen"
-                    android:text="Doanh Thu"
-                    android:textColor="@color/white" />
 
-                <Button
-                    android:id="@+id/btnTongDoanhThu"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:backgroundTint="@color/mau_nen"
-                    android:text="Tổng doanh thu"
-                    android:textColor="@color/white" />
+
+
             </LinearLayout>
 
 
@@ -144,13 +124,15 @@
                 android:orientation="horizontal"
                 android:weightSum="10">
 
-                <TextView
+                <Button
+                    android:id="@+id/btnDoanhThu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:fontFamily="@font/robito_indam"
-                    android:gravity="center"
-                    android:text="Doanh Thu: " />
+                    android:layout_weight="4"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/mau_nen"
+                    android:text="Doanh Thu"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/tv_doanhthu"
@@ -175,6 +157,7 @@
                     android:textColor="@color/mau_nen"
                     android:textSize="25dp" />
             </LinearLayout>
+
         </RelativeLayout>
 
     </LinearLayout>

@@ -53,9 +53,11 @@
     <item android:title="Thống Kê">
         <menu>
             <item android:id="@+id/mDoanhThu"
-                android:title="Doanh Thu"
+                android:title="Doanh Thu Theo Ngày"
                 android:icon="@drawable/ic_doanhthu"/>
-
+            <item android:id="@+id/mDoanhThuTong"
+                android:title="Tổng Doanh Thu"
+                android:icon="@drawable/ic_doanhthu"/>
         </menu>
     </item>
 

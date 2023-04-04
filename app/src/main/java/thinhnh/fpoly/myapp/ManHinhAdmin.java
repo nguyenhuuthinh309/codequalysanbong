@@ -31,9 +31,11 @@ import thinhnh.fpoly.myapp.Fragment.admin.KhungGioFragment;
 import thinhnh.fpoly.myapp.Fragment.admin.TrangThaihdFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.BaoCaoFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.HoaDonFragment;
+import thinhnh.fpoly.myapp.Fragment.nhanvien.HoaDonNhanVienFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.TimKiemFragment;
 import thinhnh.fpoly.myapp.Fragment.nhanvien.TrangThaiFragment;
-import thinhnh.fpoly.myapp.Fragment.thongke.ThongKeFragment;
+import thinhnh.fpoly.myapp.Fragment.thongke.ThongKeTheoNgayFragment;
+import thinhnh.fpoly.myapp.Fragment.thongke.TongDoanhThuFragment;
 import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 
 public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -76,7 +78,7 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
         tvNavChucvu = navL.getHeaderView(0).findViewById(R.id.tv_nav_chucvu);
         imgNavAvata = navL.getHeaderView(0).findViewById(+R.id.img_nav_avata);
         navL.setNavigationItemSelectedListener(this);
-        reFragment(HoaDonFragment.newInstance());
+
 
 
 
@@ -92,7 +94,7 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
             menu.findItem(R.id.timkiem).setVisible(false);
             menu.findItem(R.id.tt).setVisible(false);
 
-
+            reFragment(HoaDonFragment.newInstance());
 
         }else if(permission.equalsIgnoreCase("Nhân Viên")){
             tvNavName.setText("Nhân Viên");
@@ -106,6 +108,11 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
             menu.findItem(R.id.dstinhtrangsan).setVisible(false);
             menu.findItem(R.id.khunggio).setVisible(false);
             menu.findItem(R.id.trangthai).setVisible(false);
+            menu.findItem(R.id.mDoanhThu).setVisible(false);
+            menu.findItem(R.id.mDoanhThuTong).setVisible(false);
+
+            reFragment(HoaDonNhanVienFragment.newInstance());
+
         }
 
     }
@@ -136,7 +143,10 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.mDoanhThu:
-                reFragment(ThongKeFragment.newInstance());
+                reFragment(ThongKeTheoNgayFragment.newInstance());
+                break;
+            case R.id.mDoanhThuTong:
+                reFragment(TongDoanhThuFragment.newInstance());
                 break;
 
             case R.id.hoadon:

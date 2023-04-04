@@ -9,21 +9,24 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 
-public class ThongKeFragment extends Fragment {
+public class ThongKeTheoNgayFragment extends Fragment {
 //luu huu phuouc
     Button btntungay,btndenngay,btndoanhthu;
     EditText txttungay,txtdenngay;
@@ -31,14 +34,15 @@ public class ThongKeFragment extends Fragment {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
     HoaDon hoaDon =new HoaDon();
-
-    public ThongKeFragment() {
+    long tongThuDate = 0;
+    List<HoaDon> listDoanhThu = new ArrayList<>();
+    public ThongKeTheoNgayFragment() {
         // Required empty public constructor
     }
 
 
-    public static ThongKeFragment newInstance() {
-        ThongKeFragment fragment = new ThongKeFragment();
+    public static ThongKeTheoNgayFragment newInstance() {
+        ThongKeTheoNgayFragment fragment = new ThongKeTheoNgayFragment();
 
         return fragment;
     }
@@ -89,12 +93,34 @@ public class ThongKeFragment extends Fragment {
 
         btndoanhthu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String tong1 = String.valueOf(txttungay.getText().toString());
-                String tong2 = String.valueOf(txtdenngay.getText().toString());
-//                String t  = tong1+tong2;
-//                tvdoanhthu.setText(String.valueOf(DataBaSe.getInstance(getContext()).dao_hoadon().getdoanhthu(t).toString()));
-                // tvdoanhthu.setText(Integer.toString(hoaDon.getTongtien()));
+            public void onClick(View v) {
+                tongThuDate = 0;
+                    //tính tiền theo ngày
+                    listDoanhThu = DataBaSe.getInstance(getActivity()).dao_hoadon().getDoanhThu(txttungay.getText().toString(), txtdenngay.getText().toString());
+                    if(listDoanhThu.size() == 0){
+
+                        tvdoanhthu.setText(String.valueOf(tongThuDate));
+                    }
+                    else {
+                        for (int i = 0; i < listDoanhThu.size(); i++) {
+
+                                tongThuDate = tongThuDate + listDoanhThu.get(i).getTongtien();
+
+                        }
+                        if (String.valueOf(tongThuDate).length() > 9){
+                            Toast.makeText(getActivity(), String.valueOf(tongThuDate).length()+"" , Toast.LENGTH_SHORT).show();
+                            tongThuDate = (long) (Math.floor((tongThuDate / 1000000000)*100)/100);
+                            tvdoanhthu.setText(tongThuDate+"");
+                        }else if (String.valueOf(tongThuDate).length() > 6){
+                            tongThuDate = (long) (Math.floor((tongThuDate / 1000000)*100)/100);
+                            tvdoanhthu.setText(tongThuDate+"");
+                        }else{
+                            tvdoanhthu.setText(tongThuDate+"");
+                        }
+
+                }
+
+//                    Log.d("zzz", "onClick: " + tongThuDate);
             }
         });
 

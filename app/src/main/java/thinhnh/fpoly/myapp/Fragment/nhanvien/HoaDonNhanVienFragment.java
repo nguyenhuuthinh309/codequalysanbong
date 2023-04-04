@@ -22,7 +22,7 @@ import thinhnh.fpoly.myapp.adapter.AdapterListView_HoaDonNhanVien;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
-public class HoaDonFragment extends Fragment {
+public class HoaDonNhanVienFragment extends Fragment {
 
      ListView lisCs;
      FloatingActionButton floatCs;
@@ -40,14 +40,14 @@ public class HoaDonFragment extends Fragment {
     TextView soluong;
 
 
-    public HoaDonFragment() {
+    public HoaDonNhanVienFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static HoaDonFragment newInstance() {
-        HoaDonFragment fragment = new HoaDonFragment();
+    public static HoaDonNhanVienFragment newInstance() {
+        HoaDonNhanVienFragment fragment = new HoaDonNhanVienFragment();
 
         return fragment;
     }
@@ -92,16 +92,11 @@ public class HoaDonFragment extends Fragment {
 
     public void loadData() {
         listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
-        adapterListView_hoaDon = new AdapterListView_HoaDon(getActivity(),this::loadData);
-        adapterListView_hoaDon.setdata(listhoadon);
-        lisCs.setAdapter(adapterListView_hoaDon);
-    }
-
-    public void loadDatnhanvien() {
-        listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
         adapterListView_hoaDonNhanVien = new AdapterListView_HoaDonNhanVien(getActivity(),this::loadData);
         adapterListView_hoaDonNhanVien.setdata(listhoadon);
         lisCs.setAdapter(adapterListView_hoaDonNhanVien);
     }
+
+
 
 }

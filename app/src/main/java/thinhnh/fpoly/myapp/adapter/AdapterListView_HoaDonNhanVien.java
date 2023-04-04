@@ -5,9 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,15 +20,12 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-import thinhnh.fpoly.myapp.Fragment.nhanvien.ThemHoaDonActivity;
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
@@ -40,7 +34,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 import thinhnh.fpoly.myapp.interfaces.InteLoadData;
 
-public class  AdapterListView_HoaDon extends BaseAdapter {
+public class AdapterListView_HoaDonNhanVien extends BaseAdapter {
     ArrayList<HoaDon> list = new ArrayList<>();
     ArrayList<San> listSan = new ArrayList<>();
     ArrayList<KhungGio> listkhunggio = new ArrayList<>();
@@ -52,7 +46,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
     EditText itemngaythue;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
-    public AdapterListView_HoaDon(Context context, InteLoadData intels) {
+    public AdapterListView_HoaDonNhanVien(Context context, InteLoadData intels) {
         this.context = context;
         this.intels = intels;
     }
@@ -88,7 +82,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
         if (view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_item_hoadon, null);
+            view = inflater.inflate(R.layout.layout_item_hoadonnhanvien, null);
 
 
             viewHolder.itemTenkh = (TextView)  view.findViewById(R.id.item_tenkh);
@@ -101,7 +95,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
             viewHolder.itemHdtrangthai = (TextView)  view.findViewById(R.id.item_hdtrangthai);
             viewHolder.itemHdtongtien = (TextView)  view.findViewById(R.id.item_hdtongtien);
             viewHolder.itemsua = (ImageView)  view.findViewById(R.id.itemsua);
-            viewHolder.itemxoa = (ImageView)  view.findViewById(R.id.itemxoa);
+
             viewHolder.itemngaythue =(TextView) view.findViewById(R.id.item_ngaythue);
 
 
@@ -293,28 +287,28 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
         });
 
 
-        viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(context, "khong được xóa", Toast.LENGTH_SHORT).show();
 
+//                AlertDialog.Builder builder=new AlertDialog.Builder(context);
+//                builder.setTitle("DELETE");
+//                builder.setMessage("Do you want delete ?");
+//                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        DataBaSe.getInstance(context).dao_hoadon().deleteHOADON(hd);
+//                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
+//                        intels.loadData();
+//                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.setNegativeButton("NO",null);
+//                builder.show();
 
-                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                builder.setTitle("DELETE");
-                builder.setMessage("Do you want delete ?");
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        DataBaSe.getInstance(context).dao_hoadon().deleteHOADON(hd);
-                        Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
-                        intels.loadData();
-                        Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.setNegativeButton("NO",null);
-                builder.show();
-
-            }
-        });
+         //   }
+      //  });
 
         return view;
 

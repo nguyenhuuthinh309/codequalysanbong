@@ -83,6 +83,7 @@ public class DSNhanVienFragment extends Fragment {
         tvsnv = view.findViewById(R.id.sonv);
     imageView.setImageResource(R.drawable.avtnv);
         loadData();
+        sonv();
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +113,7 @@ public class DSNhanVienFragment extends Fragment {
                             DataBaSe.getInstance(getActivity()).dao_nv().insertNV(nv);
                             //View list hv lên màn hình
                             loadData();
+                            sonv();
                             Log.d("zzz", "onViewCreated: " + list.size());
                             dialog.dismiss();
 
@@ -127,7 +129,7 @@ public class DSNhanVienFragment extends Fragment {
 
             }
         });
-        tvsnv.setText("Số Lượng : "+ Integer.toString(sonv()));
+        tvsnv.setText("Số Lượng : "+sonv());
 
     }
 
@@ -136,6 +138,7 @@ public class DSNhanVienFragment extends Fragment {
         adapterListView_nv = new AdapterListView_NV(getActivity(),this::loadData);
         adapterListView_nv.setdata(list);
         lisCs.setAdapter(adapterListView_nv);
+
     }
     public byte[] Image_to_bye(ImageView imageView) {
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
@@ -146,15 +149,11 @@ public class DSNhanVienFragment extends Fragment {
         return bytes;
     }
     public int sonv(){
-        int x = 1;
+        int x = 0;
         lissonv =(ArrayList<NhanVien>) DataBaSe.getInstance(getActivity()).dao_nv().getAllNV();
         for (int i = 0;i<lissonv.toArray().length;i++){
-            if(lissonv.size()<0){
-                x = 0;
-                if(lissonv.size()>0){
-                    x = i+1;
-                }
-            }
+
+            x=x+1;
         }
         return x;
     }

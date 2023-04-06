@@ -91,14 +91,14 @@ android:layout_marginTop="10dp"
             android:textColor="@color/black"
 
 
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Khung Giờ"/>
         <Spinner
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:textSize="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -125,14 +125,14 @@ android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <TextView
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="Tên Sân"/>
         <Spinner
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/spntensan"/>
@@ -150,42 +150,42 @@ android:layout_marginTop="10dp"
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:weightSum="5"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="3dp"
 
-        android:layout_width="match_parent"
+        android:orientation="horizontal"
 
-        android:orientation="horizontal">
+        android:weightSum="5">
+
         <TextView
-            android:textColor="@color/black"
-            android:layout_weight="2"
-            android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:text="Bóng:"/>
-       <EditText
-           android:paddingTop="7dp"
-           android:textColor="@color/black"
-           android:id="@+id/edsoluongbong"
-           android:layout_weight="2"
-           android:layout_width="0dp"
-           android:layout_height="40dp"
-          />
+            android:layout_weight="2"
+            android:text="Bóng:"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/edsoluongbong"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="2"
+            android:paddingTop="7dp"
+            android:textColor="@color/black" />
 
 
         <TextView
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:paddingTop="10dp"
             android:id="@+id/tvgianbong"
-            android:layout_weight="1"
-            android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="5"/>
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
 
     </LinearLayout>
 

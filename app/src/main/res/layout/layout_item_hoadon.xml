@@ -26,10 +26,10 @@
                 android:id="@+id/item_tenkh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ten khach hang"
+                android:text="Ten khach hang"
 
                 android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:layout_marginBottom="10dp"/>
             <TextView
                 android:id="@+id/item_sdtkh"
@@ -55,15 +55,28 @@
                 android:fontFamily="@font/robito_indam"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"/>
-            <TextView
-                android:id="@+id/item_hdtrangthai"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="trang thai"
-
-                android:fontFamily="@font/robito_indam"
-                android:textSize="15dp"
-                android:layout_marginBottom="10dp"/>
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trạng thái"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/robito_indam"
+                    />
+                <TextView
+                    android:id="@+id/item_hdtrangthai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/robito_indam"
+                    android:textSize="25dp" />
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

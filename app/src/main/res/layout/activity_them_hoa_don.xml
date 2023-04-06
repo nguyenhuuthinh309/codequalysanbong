@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-
     tools:context=".Fragment.nhanvien.ThemHoaDonActivity">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

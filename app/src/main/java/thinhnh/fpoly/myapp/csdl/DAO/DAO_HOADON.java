@@ -24,8 +24,12 @@ public interface DAO_HOADON {
     @Query("select * from HoaDon")
     List<HoaDon> getAllHOADON();
 
+    @Query("SELECT * FROM HoaDon WHERE id_trangthaihd= :tthd ")
+    List<HoaDon> getabctthd(int tthd);
     @Query("SELECT * FROM HoaDon WHERE id_khunggio= :khunggio ")
-    List<HoaDon> getabc(int khunggio);
+    List<HoaDon> gettimkiemkhunggio(int khunggio);
+    @Query("Select * from HoaDon Where ngaythue = :tenkhachhang")
+    List<HoaDon> gettten(String tenkhachhang);
     @Query("SELECT COUNT(*) FROM HoaDon")
     int getCount();
 

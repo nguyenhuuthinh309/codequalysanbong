@@ -5,10 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,15 +20,12 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
-import thinhnh.fpoly.myapp.Fragment.nhanvien.ThemHoaDonActivity;
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
@@ -41,7 +34,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 import thinhnh.fpoly.myapp.interfaces.InteLoadData;
 
-public class  AdapterListView_HoaDon extends BaseAdapter {
+public class AdapterListView_timkiemhoadon extends BaseAdapter {
     ArrayList<HoaDon> list = new ArrayList<>();
     ArrayList<San> listSan = new ArrayList<>();
     ArrayList<KhungGio> listkhunggio = new ArrayList<>();
@@ -53,7 +46,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
     EditText itemngaythue;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
-    public AdapterListView_HoaDon(Context context, InteLoadData intels) {
+    public AdapterListView_timkiemhoadon(Context context, InteLoadData intels) {
         this.context = context;
         this.intels = intels;
     }
@@ -84,10 +77,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Resources res = viewGroup.getResources();
-        int color = res.getColor(R.color.maudo);
-        Resources resa = viewGroup.getResources();
-        int colorxanh = resa.getColor(R.color.purple_700);
         HoaDon hd = list.get(i);
         ViewHolder viewHolder = null;
         if (view == null) {
@@ -97,7 +86,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
 
 
             viewHolder.itemTenkh = (TextView)  view.findViewById(R.id.item_tenkh);
-            viewHolder.tvsdt = (TextView) view.findViewById(R.id.item_sdtkh);
+
             viewHolder.itemHdtensan = (TextView)  view.findViewById(R.id.item_hdtensan);
             viewHolder.itemHdkhunggio = (TextView)  view.findViewById(R.id.item_hdkhunggio);
             viewHolder.itemHdnuoc = (TextView)  view.findViewById(R.id.item_hdnuoc);
@@ -115,17 +104,12 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        viewHolder.itemTenkh.setText("Khách Hàng: "+hd.getTenkh());
+        viewHolder.itemTenkh.setText("Khách Hàng:"+hd.getTenkh());
 
-        viewHolder.tvsdt.setText("Số điện thoại : " + hd.getSdtkh());
-        viewHolder.itemHdtrangthai.setText(hd.getTentrangthai());
-        viewHolder.itemHdtongtien.setText("Tổng Tiền: "+hd.getTongtien());
+
+        viewHolder.itemHdtrangthai.setText("Trạng Thái:"+hd.getTentrangthai());
+        viewHolder.itemHdtongtien.setText("Tổng Tiền:"+hd.getTongtien());
         ViewHolder finalViewHolder = viewHolder;
-        if(viewHolder.itemHdtrangthai.getText().toString().equals("Chua thanh toan")){
-            viewHolder.itemHdtrangthai.setTextColor(color);
-        }else if(viewHolder.itemHdtrangthai.getText().toString().equals("Da thanh toan")){
-            viewHolder.itemHdtrangthai.setTextColor(colorxanh);
-        }
 
         viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +121,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
 
 
                 TextInputEditText     tenkhedit = (TextInputEditText) dialogEdit.findViewById(R.id.tenkhedit);
-                TextInputEditText sdtkhedit  = (TextInputEditText) dialogEdit.findViewById(R.id.sdtkhedit);
                 Spinner  spnkhunggioedit = (Spinner) dialogEdit.findViewById(R.id.spnkhunggioedit);
                 TextView      giakhunggio = (TextView) dialogEdit.findViewById(R.id.giakhunggio);
                 Spinner    spntensanedit = (Spinner) dialogEdit.findViewById(R.id.spntensanedit);
@@ -155,29 +138,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
                 Button    btnHuyAddhddedit = (Button) dialogEdit.findViewById(R.id.btnHuyAddhddedit);
                 EditText ngaythue = (EditText) dialogEdit.findViewById(R.id.edtngaythueedit);
                 ImageView btnngaythue = (ImageView) dialogEdit.findViewById(R.id.imgngayedit);
-                DatePickerDialog.OnDateSetListener mdatetungay = new DatePickerDialog.OnDateSetListener() {
-                    ViewHolder vir = null;
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        myear = i;
-                        mmonth = i1;
-                        mday = i2;
-                        GregorianCalendar c = new GregorianCalendar(myear,mmonth,mday);
-                        ngaythue.setText(simpleDateFormat.format(c.getTime()));
-                    }
-                };
-                btnngaythue.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Calendar calendar = Calendar.getInstance();
-                        myear = calendar.get(Calendar.YEAR);
-                        mmonth= calendar.get(Calendar.MONTH);
-                        mday = calendar.get(Calendar.DAY_OF_MONTH);
-                        DatePickerDialog dialog = new DatePickerDialog(dialogEdit.getContext()
-                                ,0,mdatetungay,myear,mmonth,mday);
-                        dialog.show();
-                    }
-                });
+
                 tongtien.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -231,7 +192,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
                 edsoluongnuocedit.setText(String.valueOf(hd.getNuoc()));
                 texttongtienedit.setText(String.valueOf(hd.getTongtien()));
                 ngaythue.setText(hd.getNgaythue());
-                sdtkhedit.setText(hd.getSdtkh());
 
 
                 btnAddhddedit.setOnClickListener(new View.OnClickListener() {
@@ -245,7 +205,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
                         hd.setNuoc(Integer.parseInt(edsoluongnuocedit.getText().toString()));
                         hd.setAo(Integer.parseInt(edsoluongaoedit.getText().toString()));
                         hd.setBong(Integer.parseInt(edsoluongbongedit.getText().toString()));
-                        hd.setSdtkh(sdtkhedit.getText().toString());
 
 
 
@@ -345,7 +304,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
         private ImageView itemxoa;
         private TextView itemngaythue;
         private Button ngaythuebtn;
-        private TextView tvsdt;
 
 
 

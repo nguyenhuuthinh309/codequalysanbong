@@ -36,7 +36,7 @@ import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class
 ThemHoaDonActivity extends AppCompatActivity {
-    //jgchgachasvcg//uxryctugigyftrdxcv
+    //wexrdfgvhbuinuytvrerxctyvbun
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
 

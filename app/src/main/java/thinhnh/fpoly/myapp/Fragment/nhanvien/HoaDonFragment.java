@@ -81,7 +81,6 @@ public class HoaDonFragment extends Fragment {
 
         soluong = view.findViewById(R.id.sonv1);
         soluong.setText(Integer.toString(demsoluong()));
-
         lisCs = (ListView) view.findViewById(R.id.lis_cs);
         lisCs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

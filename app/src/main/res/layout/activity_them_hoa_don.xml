@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-
     tools:context=".Fragment.nhanvien.ThemHoaDonActivity">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -91,14 +90,14 @@ android:layout_marginTop="10dp"
             android:textColor="@color/black"
 
 
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Khung Giờ"/>
         <Spinner
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:textSize="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -125,14 +124,14 @@ android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <TextView
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textSize="16dp"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:text="Tên Sân"/>
         <Spinner
             android:textColor="@color/black"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/spntensan"/>

@@ -20,6 +20,16 @@
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/fragment_tinh_trangfragment.xml" value="0.3338541666666667" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/items_tinhtrang.xml" value="0.3338541666666667" />
         <entry key="..\:/code303/codequalysanbong/app/src/main/res/layout/layout_item_hoadon.xml" value="0.19479166666666667" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.267" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/activity_them_hoa_don.xml" value="0.33" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/dialog_add_nv.xml" value="0.3625" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/dialog_add_san.xml" value="0.26358695652173914" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/dialog_hoadon_chitiet.xml" value="0.26358695652173914" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/dialog_hoadon_edit.xml" value="0.26358695652173914" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/dialog_nhanvien_chitiet.xml" value="0.3625" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/fragment_hoa_don.xml" value="0.18541666666666667" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/fragment_tim_kiem.xml" value="0.18541666666666667" />
+        <entry key="..\:/code_duan1_moinhat/codequalysanbong/app/src/main/res/layout/layout_item_hoadon.xml" value="0.33" />
       </map>
     </option>
   </component>

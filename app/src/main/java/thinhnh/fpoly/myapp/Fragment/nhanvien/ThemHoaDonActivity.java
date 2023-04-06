@@ -3,6 +3,7 @@ package thinhnh.fpoly.myapp.Fragment.nhanvien;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -33,7 +34,8 @@ import thinhnh.fpoly.myapp.csdl.DTO.San;
 import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
-public class ThemHoaDonActivity extends AppCompatActivity {
+public class
+ThemHoaDonActivity extends AppCompatActivity {
     //jgchgachasvcg//uxryctugigyftrdxcv
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
     int myear,mmonth,mday;
@@ -129,11 +131,11 @@ imgngay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
-                int makg1 = (int) hs2.get("makhunggio");
-                listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getabc(makg1);
-
-loadData();
+//                HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
+//                int makg1 = (int) hs2.get("makhunggio");
+//                listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getabc(makg1);
+//
+//loadData();
 
 
 
@@ -244,7 +246,12 @@ loadData();
             }
         });
 
+        lv_BT.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            }
+        });
 
     }
 

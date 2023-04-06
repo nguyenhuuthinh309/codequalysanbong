@@ -23,6 +23,22 @@
             android:hint="Tên Khách Hàng "
             />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sdtkhedit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Số Điện Thoại "
+            android:textColorHint="@color/mau_nen"
+            android:textSize="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

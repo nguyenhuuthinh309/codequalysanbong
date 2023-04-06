@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -81,6 +82,25 @@ public class DSNhanVienFragment extends Fragment {
         floatCs = (FloatingActionButton) view.findViewById(R.id.float_cs);
         imageView=new ImageView(getActivity());
         tvsnv = view.findViewById(R.id.sonv);
+        lisCs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_nhanvien_chitiet);
+                nv = list.get(position);
+                TextView tennv = (TextView) dialog.findViewById(R.id.tennvchitiet);
+                TextView matkhau = (TextView) dialog.findViewById(R.id.matkhaunvchitiet);
+                TextView hoten = (TextView) dialog.findViewById(R.id.hotennvchitiet);
+                TextView sdt = (TextView) dialog.findViewById(R.id.sdtnvchitiet);
+                tennv.setText(nv.getTk_NV());
+               matkhau.setText(nv.getMk_NV());
+               hoten.setText(nv.getTen_NV());
+               sdt.setText(nv.getSdt_NV());
+                dialog.show();
+
+
+            }
+        });
     imageView.setImageResource(R.drawable.avtnv);
         loadData();
         sonv();
@@ -151,9 +171,9 @@ public class DSNhanVienFragment extends Fragment {
     public int sonv(){
         int x = 0;
         lissonv =(ArrayList<NhanVien>) DataBaSe.getInstance(getActivity()).dao_nv().getAllNV();
-        for (int i = 0;i<lissonv.toArray().length;i++){
+        for (int i = 1;i<lissonv.toArray().length;i++){
 
-            x=x+1;
+            x=i+1;
         }
         return x;
     }

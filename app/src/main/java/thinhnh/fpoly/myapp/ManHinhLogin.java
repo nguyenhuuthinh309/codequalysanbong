@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,17 +18,18 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
+import thinhnh.fpoly.myapp.csdl.DTO.Admin;
 import thinhnh.fpoly.myapp.csdl.DTO.NhanVien;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class ManHinhLogin extends AppCompatActivity {
-
+       TextView taotkadmin;
     private Button btn_dangNhap;
     CheckBox ckluuMK;
     private TextInputEditText edUser_login,edPass_login;
     private Spinner spinner;
     ArrayList<NhanVien> listCheckNV;
-
+    ArrayList<Admin> listCheckHV;
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class ManHinhLogin extends AppCompatActivity {
         edUser_login = findViewById(R.id.txt_edt_mhlogin_username);
         edPass_login = findViewById(R.id.txt_edt_mhlogin_pass);
         ckluuMK=findViewById(R.id.chk_luumk);
+        taotkadmin = findViewById(R.id.taotkAdmin);
         // Lấy mật khẩu
         sharedPreferences=getSharedPreferences("data",MODE_PRIVATE);
         edUser_login.setText(sharedPreferences.getString("user_name",""));
@@ -53,6 +56,15 @@ public class ManHinhLogin extends AppCompatActivity {
         int pos = adapter.getPosition(sharedPreferences.getString("tk",""));
         spinner.setSelection(pos);
 
+        taotkadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ManHinhLogin.this, "đăng ký chỉ dành cho Admin", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ManHinhLogin.this,ManHinhDkAdmin.class);
+                startActivity(intent);
+            }
+        });
+
 
         btn_dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +77,44 @@ public class ManHinhLogin extends AppCompatActivity {
                     bundle.putString("value", permission);
                     intent.putExtras(bundle);
                     if(permission.equalsIgnoreCase("ADMIN")){
-                        if(edUser_login.getText().toString().trim().equalsIgnoreCase("1") && edPass_login.getText().toString().trim().equalsIgnoreCase("1")){
+                        String user = edUser_login.getText().toString();
+                        String pass = edPass_login.getText().toString();
+                        listCheckHV = new ArrayList<>();
+                        listCheckHV = (ArrayList<Admin>) DataBaSe.getInstance(ManHinhLogin.this).dao_admin().CheckLogin(user, pass);
+                        if(listCheckHV.size() == 1){
+                            String tenHV = listCheckHV.get(0).getHoten();
+                            String emailHV = listCheckHV.get(0).getEmail();
+                            String diachi = listCheckHV.get(0).getDiachi();
+                            String tensan = listCheckHV.get(0).getTensan();
+                            int idHV = listCheckHV.get(0).getId_admin();
+                            String userHV = listCheckHV.get(0).getEmail();
+
+                            bundle.putString("tenHV", tenHV);
+                            bundle.putString("idHV", String.valueOf(idHV));
+
+                            bundle.putString("diachiHV", diachi);
+                            bundle.putString("tensanHV", tensan);
+
+                            bundle.putString("userHV", userHV);
+                            intent.putExtras(bundle);
+                            Toast.makeText(ManHinhLogin.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            if (ckluuMK.isChecked()){
+                                editor.putString("user_name",edUser_login.getText().toString());
+                                editor.putString("pass",edPass_login.getText().toString());
+                                editor.putString("tk",permission);
+                                editor.putBoolean("ck",true);
+                                editor.commit();
+                            }else {
+                                editor.remove("user_name");
+                                editor.remove("pass");
+                                editor.remove("tk");
+                                editor.remove("ck");
+                                editor.commit();
+                            }
+                            startActivity(intent);
+                        }
+
+                        else if(edUser_login.getText().toString().trim().equalsIgnoreCase("1") && edPass_login.getText().toString().trim().equalsIgnoreCase("1")){
                             if (ckluuMK.isChecked()){
                                 editor.putString("user_name",edUser_login.getText().toString());
                                 editor.putString("pass",edPass_login.getText().toString());

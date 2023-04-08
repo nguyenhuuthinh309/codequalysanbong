@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import thinhnh.fpoly.myapp.csdl.DAO.DAO_Admin;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_BaoCao;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_DV;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_HOADON;
@@ -14,6 +15,7 @@ import thinhnh.fpoly.myapp.csdl.DAO.DAO_LOAISAN;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_NV;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_SAN;
 import thinhnh.fpoly.myapp.csdl.DAO.DAO_TTHD;
+import thinhnh.fpoly.myapp.csdl.DTO.Admin;
 import thinhnh.fpoly.myapp.csdl.DTO.BaoCao;
 import thinhnh.fpoly.myapp.csdl.DTO.DichVu;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
@@ -24,7 +26,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.San;
 import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 
 
-@Database(entities = {NhanVien.class, BaoCao.class,LoaiSan.class, San.class, DichVu.class, KhungGio.class, TrangThaiHoaDon.class, HoaDon.class,}, version = 2)
+@Database(entities = {Admin.class,NhanVien.class, BaoCao.class,LoaiSan.class, San.class, DichVu.class, KhungGio.class, TrangThaiHoaDon.class, HoaDon.class,}, version = 2)
 public abstract class DataBaSe extends RoomDatabase {
     private static final String DATABASE_NAME = "db.db1";
     private static DataBaSe instance;
@@ -43,6 +45,7 @@ public abstract class DataBaSe extends RoomDatabase {
     public abstract DAO_NV dao_nv();
     public abstract DAO_TTHD dao_tthd();
     public  abstract DAO_HOADON dao_hoadon();
+    public  abstract DAO_Admin dao_admin();
 
 
 

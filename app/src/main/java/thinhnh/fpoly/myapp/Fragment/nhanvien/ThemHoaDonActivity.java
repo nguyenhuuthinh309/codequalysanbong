@@ -104,7 +104,6 @@ ThemHoaDonActivity extends AppCompatActivity {
         AdapterListView_HoaDon adapterListView_hoaDon;
 
 
-
         SimpleAdapter simpleAdapter1 = new SimpleAdapter(this, getDSSan(), android.R.layout.simple_list_item_1, new String[]{"tensan"}, new int[]{android.R.id.text1});
         spntensan.setAdapter(simpleAdapter1);
 
@@ -115,18 +114,18 @@ ThemHoaDonActivity extends AppCompatActivity {
         SimpleAdapter simpleAdapter4 = new SimpleAdapter(this, getDSTTHD(), android.R.layout.simple_list_item_1, new String[]{"tentthd"}, new int[]{android.R.id.text1});
         spntrangthai.setAdapter(simpleAdapter4);
 
-imgngay.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Calendar calendar = Calendar.getInstance();
-        myear = calendar.get(Calendar.YEAR);
-        mmonth= calendar.get(Calendar.MONTH);
-        mday = calendar.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog dialog = new DatePickerDialog(ThemHoaDonActivity.this
-                ,0,mdatetungay,myear,mmonth,mday);
-        dialog.show();
-    }
-});
+        imgngay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                myear = calendar.get(Calendar.YEAR);
+                mmonth = calendar.get(Calendar.MONTH);
+                mday = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ThemHoaDonActivity.this
+                        , 0, mdatetungay, myear, mmonth, mday);
+                dialog.show();
+            }
+        });
         timkiemhoadon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,10 +137,8 @@ imgngay.setOnClickListener(new View.OnClickListener() {
 //loadData();
 
 
-
             }
         });
-
 
         tongtienbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,24 +157,37 @@ imgngay.setOnClickListener(new View.OnClickListener() {
                 String gianuoc = String.valueOf(10);
                 int so3 = Integer.parseInt(gianuoc);
 
-                int tich = so1 *so11;
-                int tich2 = so2 *so22;
-                int tich3 = so3 *so33;
+                int tich = so1 * so11;
+                int tich2 = so2 * so22;
+                int tich3 = so3 * so33;
 
-                HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
+                HashMap<String, Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
                 int masan = (int) hs1.get("masan");
                 String tensan = (String) hs1.get("tensan");
                 String giasan = (String) hs1.get("giasan");
 
                 int giasan1 = Integer.parseInt(giasan);
 
-            int    tongtientatca1 = tich + tich2 + tich3 + giasan1;
+                int tongtientatca1 = tich + tich2 + tich3 + giasan1;
                 texttongtien.setText(String.valueOf(tongtientatca1));
 
 
             }
         });
 
+
+        lv_BT.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+        btnHuyAddhdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         btnAddhdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,16 +211,12 @@ imgngay.setOnClickListener(new View.OnClickListener() {
                 int so3 = Integer.parseInt(gianuoc);
 
 
-
-                int tich = so1 *so11;
-                int tich2 = so2 *so22;
-                int tich3 = so3 *so33;
-
+                int tich = so1 * so11;
+                int tich2 = so2 * so22;
+                int tich3 = so3 * so33;
 
 
-
-
-                HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
+                HashMap<String, Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
                 int masan = (int) hs1.get("masan");
 
                 String tensan = (String) hs1.get("tensan");
@@ -218,45 +224,77 @@ imgngay.setOnClickListener(new View.OnClickListener() {
 
                 int giasan1 = Integer.parseInt(giasan);
 
-                int    tongtientatca1 = tich + tich2 + tich3 + giasan1;
+                int tongtientatca1 = tich + tich2 + tich3 + giasan1;
                 texttongtien.setText(String.valueOf(tongtientatca1));
 
-                HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
+                HashMap<String, Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
                 int makg = (int) hs2.get("makhunggio");
                 String khunggio = (String) hs2.get("khunggio");
 
-                HashMap<String,Object> hs4 = (HashMap<String, Object>) spntrangthai.getSelectedItem();
+                HashMap<String, Object> hs4 = (HashMap<String, Object>) spntrangthai.getSelectedItem();
                 int matthd1 = (int) hs4.get("matthd");
                 String tentthd1 = (String) hs4.get("tentthd");
 
 
                 //set thuộc tính HV
-                hd = new HoaDon(tenkh1,sdtkh1,masan,tensan,giasan,makg,khunggio,matthd1,tentthd1,tich,tich2,tich3,tongtientatca1,edtngay);
+                hd = new HoaDon(tenkh1, sdtkh1, masan, tensan, giasan, makg, khunggio, matthd1, tentthd1, tich, tich2, tich3, tongtientatca1, edtngay);
                 //Add hv vào database
                 DataBaSe.getInstance(getApplicationContext()).dao_hoadon().insertHOADON(hd);
                 //View list hv lên màn hìn
                 // Khởi tạo Fragment
-               finish();
-            }
-        });
-        btnHuyAddhdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-           finish();
+                finish();
             }
         });
 
-        lv_BT.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
+    }
+    public void reFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_ly_mhAdmin, fragment);
+        transaction.commit();
+    }
+    private ArrayList<HashMap<String, Object>> getDSKhungGio() {
+
+        listkhunggio = (ArrayList<KhungGio>) DataBaSe.getInstance(this).dao_khunggio().getAllkhunggio();
+        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
+
+        for (KhungGio khungGio : listkhunggio) {
+            HashMap<String, Object> hs2 = new HashMap<>();
+            hs2.put("makhunggio", khungGio.getId_khunggio());
+            hs2.put("khunggio", khungGio.getKhunggio());
+            listHM.add(hs2);
+        }
+        return listHM;
 
     }
 
 
+    private ArrayList<HashMap<String, Object>> getDSTTHD() {
 
+        listtthd = (ArrayList<TrangThaiHoaDon>) DataBaSe.getInstance(this).dao_tthd().getAllTTHD();
+        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
+
+        for (TrangThaiHoaDon trangThaiHoaDon : listtthd) {
+            HashMap<String, Object> hs4 = new HashMap<>();
+            hs4.put("matthd", trangThaiHoaDon.getId_trangthaihd());
+            hs4.put("tentthd", trangThaiHoaDon.getTentrangthai());
+
+            listHM.add(hs4);
+        }
+        return listHM;
+
+    }
+
+    DatePickerDialog.OnDateSetListener mdatetungay = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            myear = i;
+            mmonth = i1;
+            mday = i2;
+            GregorianCalendar c = new GregorianCalendar(myear, mmonth, mday);
+            edtngaythue.setText(simpleDateFormat.format(c.getTime()));
+        }
+    };
     private ArrayList<HashMap<String, Object>> getDSSan() {
 
         listsan = (ArrayList<San>) DataBaSe.getInstance(this).dao_san().getAllSan();
@@ -269,72 +307,9 @@ imgngay.setOnClickListener(new View.OnClickListener() {
             hs1.put("giasan", san.getGiasan());
             listHM.add(hs1);
         }
-        return  listHM;
+        return listHM;
 
     }
-
-    private ArrayList<HashMap<String, Object>> getDSKhungGio() {
-
-        listkhunggio = (ArrayList<KhungGio>) DataBaSe.getInstance(this).dao_khunggio().getAllkhunggio();
-        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
-
-        for (KhungGio khungGio : listkhunggio) {
-            HashMap<String, Object> hs2 = new HashMap<>();
-            hs2.put("makhunggio", khungGio.getId_khunggio());
-            hs2.put("khunggio",khungGio.getKhunggio());
-            listHM.add(hs2);
-        }
-        return  listHM;
-
-    }
-
-
-
-    private ArrayList<HashMap<String, Object>> getDSTTHD() {
-
-        listtthd = (ArrayList<TrangThaiHoaDon>) DataBaSe.getInstance(this).dao_tthd().getAllTTHD();
-        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
-
-        for (TrangThaiHoaDon trangThaiHoaDon : listtthd) {
-            HashMap<String, Object> hs4 = new HashMap<>();
-            hs4.put("matthd", trangThaiHoaDon.getId_trangthaihd());
-            hs4.put("tentthd",trangThaiHoaDon.getTentrangthai());
-
-            listHM.add(hs4);
-        }
-        return  listHM;
-
-    }
-
-
-    private void loadData() {
-        //listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(this).dao_hoadon().getAllHOADON();
-        adapterListView_hoaDon = new AdapterListView_HoaDon(this, this::loadData);
-        adapterListView_hoaDon.setdata(listhoadon);
-        lv_BT.setAdapter(adapterListView_hoaDon);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-    DatePickerDialog.OnDateSetListener mdatetungay = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-            myear = i;
-            mmonth = i1;
-            mday = i2;
-            GregorianCalendar c = new GregorianCalendar(myear,mmonth,mday);
-            edtngaythue.setText(simpleDateFormat.format(c.getTime()));
-        }
-    };
-
-    public void reFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_ly_mhAdmin, fragment);
-        transaction.commit();
-    }
-
-
 }
+
+

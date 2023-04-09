@@ -78,38 +78,40 @@ public class DSLoaiSanFragment extends Fragment {
                 btnAddNV = (Button)  dialog.findViewById(R.id.btnAddNV);
                 btnHuyAddNv = (Button) dialog.findViewById(R.id.btnHuyAddNv);
 
-                btnAddNV.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        if (validate()){}
-                        String tenloai = loaisanAdd.getText().toString();
-
-                        //set thuộc tính HV
-                        loaisan = new LoaiSan(tenloai);
-                        //Add hv vào database
-                        DataBaSe.getInstance(getActivity()).dao_loaisan().insertLoaiSan(loaisan);
-                        //View list hv lên màn hình
-                        loadData();
-                        Log.d("zzz", "onViewCreated: " + list.size());
-                        dialog.dismiss();
-
-                    }
-                });
-                btnHuyAddNv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
-            }
-        });
-    }
-    public void loadData() {
-        list = (ArrayList<LoaiSan>) DataBaSe.getInstance(getActivity()).dao_loaisan().getAllLoaiSan();
-        adapterListView_loaiSan = new AdapterListView_LoaiSan(getActivity(),this::loadData);
-        adapterListView_loaiSan.setdata(list);
-        lisCs.setAdapter(adapterListView_loaiSan);
-    }
+               //them
+                btnAddNV.setOnClickListener(new View.OnClickListener() {//
+                    @Override//
+                    public void onClick(View v) {//
+//                        if (validate()){}//
+                        String tenloai = loaisanAdd.getText().toString();//
+//
+                        //set thuộc tính HV/
+                        loaisan = new LoaiSan(tenloai);//
+                        //Add hv vào database//
+                        DataBaSe.getInstance(getActivity()).dao_loaisan().insertLoaiSan(loaisan);//
+                        //View list hv lên màn hình//
+                        loadData();//
+                        Log.d("zzz", "onViewCreated: " + list.size());//
+                        dialog.dismiss();//
+//
+                    }//
+                });//
+//
+                btnHuyAddNv.setOnClickListener(new View.OnClickListener() {//
+                    @Override//
+                    public void onClick(View view) {//
+                        dialog.dismiss();//
+                    }//
+                });//
+                dialog.show();//
+//
+            }//
+        });//
+    }//
+    public void loadData() {//
+        list = (ArrayList<LoaiSan>) DataBaSe.getInstance(getActivity()).dao_loaisan().getAllLoaiSan();//
+        adapterListView_loaiSan = new AdapterListView_LoaiSan(getActivity(),this::loadData);//
+        adapterListView_loaiSan.setdata(list);//
+        lisCs.setAdapter(adapterListView_loaiSan);//
+    }//
 }

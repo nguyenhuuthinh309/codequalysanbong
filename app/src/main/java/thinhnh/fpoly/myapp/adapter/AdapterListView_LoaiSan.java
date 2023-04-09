@@ -91,11 +91,10 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
 
 
                 TextInputEditText   loaisanedit = (TextInputEditText) dialogEdit.findViewById(R.id.loaisanedit);
-                Button    btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);
+                Button    btneditls = (Button) dialogEdit.findViewById(R.id.btneditls);//
                 Button   btnHuyEditls = (Button) dialogEdit.findViewById(R.id.btnHuyEditls);
 
                 loaisanedit.setText(ls.getTenloai());
-
                 btneditls.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -129,7 +128,7 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DataBaSe.getInstance(context).dao_loaisan().deleteLoaiSan(ls);
                         Toast.makeText((context), "Đã xóa", Toast.LENGTH_SHORT).show();
-                        intels.loadData();
+                        intels.loadData();//
                         Toast.makeText(context, " xóa", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -142,20 +141,9 @@ public class AdapterListView_LoaiSan extends BaseAdapter {
 
     }
     public class ViewHolder {
-
-
-
-
          TextView itemTenloai;
          ImageView itemsua,itemxoa;
 
        ImageView avata;
-
-
-
-
-
-
-
     }
 }

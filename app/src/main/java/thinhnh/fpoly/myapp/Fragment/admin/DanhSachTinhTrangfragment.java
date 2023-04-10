@@ -83,81 +83,82 @@ public class DanhSachTinhTrangfragment extends Fragment {
         loadData();
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.dialog_add_baocao);
-
-
-                spntensan = (Spinner) dialog.findViewById(R.id.spntensan);
-                edittextmota = (EditText) dialog.findViewById(R.id.edittextmota);
-
-
-                btnAddSan = (Button) dialog.findViewById(R.id.btnAddSan);
-                btnHuyAddSan = (Button) dialog.findViewById(R.id.btnHuyAddSan);
-                SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), getDSSan(), android.R.layout.simple_list_item_1, new String[]{"tensan"}, new int[]{android.R.id.text1});
-                spntensan.setAdapter(simpleAdapter);
-                btnAddSan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        if (validate()){}
-
-                        HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
-                        int masan = (int) hs1.get("masan");
-
-                        String tensan = (String) hs1.get("tensan");
-                        String giasan = (String) hs1.get("giasan");
-
-                        String mota = edittextmota.getText().toString();
-
-                        //set thuộc tính HV
-                        baoCao  = new BaoCao(masan,tensan,giasan,mota);
-                        //Add hv vào database
-                        DataBaSe.getInstance(getActivity()).dao_baoCao().insertBC(baoCao);
-                        //View list hv lên màn hình
-                        loadData();
-                        Log.d("zzz", "onViewCreated: " + list1.size());
-                        dialog.dismiss();
-
-                    }
-                });
-                btnHuyAddSan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
-            }
-
-
-        });
-
-    }
-
-
-    public void loadData() {
-        list1 = (ArrayList<BaoCao>) DataBaSe.getInstance(getActivity()).dao_baoCao().getAllBc();
-        adapterListView_san = new AdapterListView_BaoCao(getActivity(),this::loadData);
-        adapterListView_san.setdata(list1);
-        lisCs.setAdapter(adapterListView_san);
-
-
-
-    }
-    private ArrayList<HashMap<String, Object>> getDSSan() {
-
-        listsan = (ArrayList<San>) DataBaSe.getInstance(getActivity()).dao_san().getAllSan();
-        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
-
-        for (San san : listsan) {
-            HashMap<String, Object> hs1 = new HashMap<>();
-            hs1.put("masan", san.getId_san());
-            hs1.put("tensan", san.getTensan());
-            hs1.put("giasan", san.getGiasan());
-            listHM.add(hs1);
-        }
-        return  listHM;
-
+            public void onClick(View v) {//
+                Dialog dialog = new Dialog(getActivity());//
+                dialog.setContentView(R.layout.dialog_add_baocao);//
+//
+//
+                spntensan = (Spinner) dialog.findViewById(R.id.spntensan);//
+                edittextmota = (EditText) dialog.findViewById(R.id.edittextmota);//
+//
+//
+                btnAddSan = (Button) dialog.findViewById(R.id.btnAddSan);//
+                btnHuyAddSan = (Button) dialog.findViewById(R.id.btnHuyAddSan);//
+                SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), getDSSan(), android.R.layout.simple_list_item_1, new String[]{"tensan"}, new int[]{android.R.id.text1});//
+                //
+                spntensan.setAdapter(simpleAdapter);//
+                btnAddSan.setOnClickListener(new View.OnClickListener() {//
+                    @Override//
+                    public void onClick(View v) {//
+//                        if (validate()){}//
+//
+                        HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();//
+                        int masan = (int) hs1.get("masan");//
+//
+                        String tensan = (String) hs1.get("tensan");//
+                        String giasan = (String) hs1.get("giasan");//
+//
+                        String mota = edittextmota.getText().toString();//
+//
+                        //set thuộc tính HV//
+                        baoCao  = new BaoCao(masan,tensan,giasan,mota);//
+                        //Add hv vào database//
+                        DataBaSe.getInstance(getActivity()).dao_baoCao().insertBC(baoCao);//
+                        //View list hv lên màn hình//
+                        loadData();//
+                        Log.d("zzz", "onViewCreated: " + list1.size());//
+                        dialog.dismiss();//
+//
+                    }//
+                });//
+                btnHuyAddSan.setOnClickListener(new View.OnClickListener() {//
+                    @Override//
+                    public void onClick(View view) {//
+                        dialog.dismiss();//
+                    }//
+                });//
+                dialog.show();//
+//
+            }//
+//
+//
+        });//
+//
+    }//
+//
+//
+    public void loadData() {//
+        list1 = (ArrayList<BaoCao>) DataBaSe.getInstance(getActivity()).dao_baoCao().getAllBc();//
+        adapterListView_san = new AdapterListView_BaoCao(getActivity(),this::loadData);//
+        adapterListView_san.setdata(list1);//
+        lisCs.setAdapter(adapterListView_san);//
+//
+///
+//
+    }///
+    private ArrayList<HashMap<String, Object>> getDSSan() {//
+//
+        listsan = (ArrayList<San>) DataBaSe.getInstance(getActivity()).dao_san().getAllSan();//
+        ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();//
+//
+        for (San san : listsan) {//
+            HashMap<String, Object> hs1 = new HashMap<>();//
+            hs1.put("masan", san.getId_san());//
+            hs1.put("tensan", san.getTensan());//
+            hs1.put("giasan", san.getGiasan());//
+            listHM.add(hs1);//
+        }//
+        return  listHM;//
+//
     }
 }

@@ -58,30 +58,26 @@ public class TongDoanhThuFragment extends Fragment {
 
 
 
-        btnTongDoanhThu = (Button) view.findViewById(R.id.btnTongDoanhThu);
         tvDoanhthu = (TextView) view.findViewById(R.id.tv_doanhthu);
-        btnTongDoanhThu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                list = DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
-                for (int i = 0; i < list.size(); i++) {
+        list = DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
+        for (int i = 0; i < list.size(); i++) {
 
-                        tongthu = tongthu + list.get(i).getTongtien();
+            tongthu = tongthu + list.get(i).getTongtien();
 
-                }
-                if (String.valueOf(tongthu).length() > 9){
-                    Toast.makeText(getActivity(), String.valueOf(tongthu).length()+"" , Toast.LENGTH_SHORT).show();
-                    tongthu = (long) (Math.floor((tongthu / 1000000000)*100)/100);
-                    tvDoanhthu.setText(tongthu+" Tỷ");
-                }else if (String.valueOf(tongthu).length() > 6){
-                    tongthu = (long) (Math.floor((tongthu / 1000000)*100)/100);
-                    tvDoanhthu.setText(tongthu+" Tr");
-                }else{
-                    tvDoanhthu.setText(tongthu+"");
-                }
+        }
+        if (String.valueOf(tongthu).length() > 9){
+            Toast.makeText(getActivity(), String.valueOf(tongthu).length()+"" , Toast.LENGTH_SHORT).show();
+            tongthu = (long) (Math.floor((tongthu / 1000000000)*100)/100);
+            tvDoanhthu.setText(tongthu+" Tỷ");
+        }else if (String.valueOf(tongthu).length() > 6){
+            tongthu = (long) (Math.floor((tongthu / 1000000)*100)/100);
+            tvDoanhthu.setText(tongthu+" Tr");
+        }else{
+            tvDoanhthu.setText(tongthu+" :VND");
+        }
 //                tvDoanhThu.setText(String.valueOf(tongthu));
-            }
-        });
+
+
 
     }
 }

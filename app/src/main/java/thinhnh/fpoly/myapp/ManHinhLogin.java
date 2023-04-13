@@ -88,7 +88,6 @@ public class ManHinhLogin extends AppCompatActivity {
                             String tensan = listCheckHV.get(0).getTensan();
                             int idHV = listCheckHV.get(0).getId_admin();
                             String userHV = listCheckHV.get(0).getEmail();
-
                             bundle.putString("tenHV", tenHV);
                             bundle.putString("idHV", String.valueOf(idHV));
 

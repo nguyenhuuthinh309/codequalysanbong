@@ -10,6 +10,7 @@ import androidx.room.Update;
 import java.util.List;
 
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
+import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 
 @Dao
 public interface DAO_HOADON {
@@ -20,14 +21,18 @@ public interface DAO_HOADON {
     void updataHOADON(HoaDon trangThaiHoaDon);
     @Delete
     void deleteHOADON(HoaDon trangThaiHoaDon);
-
+    @Query("select*from HoaDon where tensan = :ten and ngaythue = :ngay and khunggio = :gio")
+    List<HoaDon> checkadd(String ten ,String ngay,String gio);
     @Query("select * from HoaDon")
     List<HoaDon> getAllHOADON();
-
-    @Query("SELECT * FROM HoaDon WHERE id_trangthaihd= :tthd ")
-    List<HoaDon> getabctthd(int tthd);
+    @Query("Select * from HoaDon where tenkh = :ten")
+    List<HoaDon> gettenhoadon(String ten);
+    @Query("SELECT * FROM HoaDon WHERE tentrangthai= :tthd ")
+    List<HoaDon> getabctthd(String tthd);
     @Query("SELECT * FROM HoaDon WHERE id_khunggio= :khunggio ")
     List<HoaDon> gettimkiemkhunggio(int khunggio);
+    @Query("select *from HoaDon where khunggio = :khunggio")
+    List<HoaDon> getkhunggio(String khunggio);
     @Query("Select * from HoaDon Where ngaythue = :tenkhachhang")
     List<HoaDon> gettten(String tenkhachhang);
     @Query("SELECT COUNT(*) FROM HoaDon")

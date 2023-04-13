@@ -26,21 +26,24 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/lis_edttenhdtimkiem"
             android:background="@drawable/shape_background_item4"
-            android:hint="Nhập Hóa Đơn"
+            android:hint="Tìm khách hàng "
             android:padding="10dp"
             android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_margin="10dp"
             android:layout_height="45dp"/>
+
         <ImageView
-            android:background="@drawable/shape_background_item5"
-            android:layout_weight="1"
+            android:id="@+id/imgtimkiemten"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_background_item5"
             android:padding="3dp"
-            android:src="@drawable/ic_search"
-            android:layout_height="45dp"/>
+            android:src="@drawable/ic_search" />
     </LinearLayout>
     <LinearLayout
 
@@ -53,7 +56,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:text="Số Lượng :"
+        android:text="Số Lượng Hóa Đơn :"
         android:layout_marginLeft="10dp"
         android:textStyle="italic"
         android:textColor="@color/black"
@@ -71,14 +74,15 @@
 
             />
     </LinearLayout>
+
     <ListView
 
-        android:background="@color/white"
-        android:layout_marginTop="170dp"
         android:id="@+id/lis_cs"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_height="match_parent"/>
+        android:layout_marginTop="170dp"
+        android:background="@color/white" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

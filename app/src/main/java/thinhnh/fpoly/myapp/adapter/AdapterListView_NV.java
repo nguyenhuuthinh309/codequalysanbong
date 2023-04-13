@@ -75,8 +75,6 @@ public class AdapterListView_NV extends BaseAdapter {
             viewHolder.itemsua = (ImageView)  convertView.findViewById(R.id.itemsua);
             viewHolder.itemxoa = (ImageView)  convertView.findViewById(R.id.itemxoa);
 
-
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -94,6 +92,8 @@ public class AdapterListView_NV extends BaseAdapter {
         viewHolder.itemsua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Dialog dialogEdit = new Dialog(context);
                 dialogEdit.setContentView(R.layout.dialog_nv_edit);
                 Button btnEditHV = dialogEdit.findViewById(R.id.btnedit_HV);
@@ -157,6 +157,9 @@ public class AdapterListView_NV extends BaseAdapter {
         });
 
         return convertView;
+    }
+    public void vadilate(){
+
     }
 
     public class ViewHolder {

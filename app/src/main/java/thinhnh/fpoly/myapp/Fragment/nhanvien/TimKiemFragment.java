@@ -92,7 +92,8 @@ ArrayList<TrangThaiHoaDon> listtrangtthd = new ArrayList<>();
                 HashMap<String,Object> hs2 = (HashMap<String, Object>)
                         spntthd.getSelectedItem();
                 int makg11 = (int) hs2.get("matthd");
-                listngay = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getabctthd(makg11);
+                String ten = (String) hs2.get("tentthd");
+                listngay = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getabctthd(ten);
                 loadData();
             }
         });

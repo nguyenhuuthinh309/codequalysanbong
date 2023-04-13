@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.DoiMKFragment;
+import thinhnh.fpoly.myapp.Fragment.NguoiDung.ListhoadonFragment;
 import thinhnh.fpoly.myapp.Fragment.NguoiDung.ThongTinFragment;
 import thinhnh.fpoly.myapp.Fragment.admin.DSDichVuFragment;
 import thinhnh.fpoly.myapp.Fragment.admin.DSLoaiSanFragment;
@@ -89,20 +90,20 @@ public class ManHinhAdmin  extends AppCompatActivity implements NavigationView.O
             tvNavChucvu.setText("Admin123@admin.com");
 
             Menu menu = navL.getMenu();
-
+            menu.findItem(R.id.listhoadon).setVisible(false);
             menu.findItem(R.id.baocao).setVisible(false);
             menu.findItem(R.id.timkiem).setVisible(false);
             menu.findItem(R.id.tt).setVisible(false);
 
-            reFragment(HoaDonFragment.newInstance());
-
+            reFragment(ListhoadonFragment.newInstance());
         }else if(permission.equalsIgnoreCase("Nhân Viên")){
             tvNavName.setText("Nhân Viên");
             tvNavChucvu.setText("NhanVien123@admin.com");
-
             Menu menu = navL.getMenu();
+            menu.findItem(R.id.listhoadon).setVisible(false);
             menu.findItem(R.id.dsnhanvien).setVisible(false);
             menu.findItem(R.id.dssan).setVisible(false);
+            menu.findItem(R.id.tt).setVisible(false);
             menu.findItem(R.id.dsloaisan).setVisible(false);
             menu.findItem(R.id.dsdichvu).setVisible(false);
             menu.findItem(R.id.dstinhtrangsan).setVisible(false);

@@ -63,34 +63,36 @@
         android:textColor="@color/black"
         android:layout_marginRight="10dp"/>
 </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        >
+        android:layout_height="47dp"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text=" Ngày thuê:"
             android:layout_marginTop="0dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:text=" Ngày thuê:"
             android:textColor="@color/black"
-            android:layout_marginRight="10dp"/>
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/ngaythuechitiet"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textSize="20dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
 
             android:gravity="center"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginRight="10dp"/>
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
@@ -105,16 +107,15 @@
         <TextView
             android:id="@+id/khunggiochitiet"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:textSize="20dp"
-            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
@@ -129,7 +130,7 @@
         <TextView
             android:id="@+id/tensanchitiet"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:textSize="20dp"
             android:gravity="center"
             android:textStyle="bold"
@@ -138,14 +139,14 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text=" Giá bóng:"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="5dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -153,16 +154,15 @@
         <TextView
             android:id="@+id/giabongchitiet"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:textSize="20dp"
-            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <TextView
@@ -177,15 +177,14 @@
         <TextView
             android:id="@+id/giaaochitiet"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:textSize="20dp"
-            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginRight="10dp"/>
     </LinearLayout> <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
     <TextView
@@ -200,9 +199,8 @@
     <TextView
         android:id="@+id/gianuocchitiet"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:textSize="20dp"
-        android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginRight="10dp"/>
@@ -213,7 +211,7 @@
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text=" Tổng tiền:"
             android:layout_marginTop="0dp"
@@ -226,7 +224,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textSize="30dp"
-            android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/maudo"
             android:layout_marginRight="10dp"/>
@@ -237,7 +234,7 @@
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Trạng thái:"
             android:layout_marginTop="17dp"
@@ -249,7 +246,7 @@
             android:id="@+id/trangthaichitiet"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_marginTop="17dp"
             android:textStyle="bold"
             android:textColor="@color/black"

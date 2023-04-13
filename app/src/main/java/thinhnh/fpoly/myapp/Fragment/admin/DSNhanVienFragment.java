@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,6 +70,16 @@ public class DSNhanVienFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+        tvsnv.setText("Số Lượng : "+sonv());
+
+    }
+
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -102,13 +113,14 @@ public class DSNhanVienFragment extends Fragment {
             }
         });
     imageView.setImageResource(R.drawable.avtnv);
-        loadData();
-        sonv();
+
+
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.dialog_add_nv);
+
                 tkAdd = (TextInputEditText) dialog.findViewById(R.id.tk_add);
                 mkAdd = (TextInputEditText)  dialog.findViewById(R.id.mk_add);
                 tenAdd = (TextInputEditText)  dialog.findViewById(R.id.ten_add);
@@ -119,6 +131,10 @@ public class DSNhanVienFragment extends Fragment {
                 btnAddNV.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String reg = "^(0|\\+84)(\\s|\\.)?((3[2-9]" +
+                                ")|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)" +
+                                "?(\\d{3})(\\s|\\.)?(\\d{3})$";
+//                        boolean kt = sdtAdd.(reg);
 //                        if (validate()){}
                             String tk = tkAdd.getText().toString();
                             String mk = mkAdd.getText().toString();
@@ -126,16 +142,41 @@ public class DSNhanVienFragment extends Fragment {
                             String sdt = sdtAdd.getText().toString();
 
 
+                        String regexStr = "^[0-9]$";
 
                             //set thuộc tính HV
+
                             nv = new NhanVien(tk,mk,ten,sdt,Image_to_bye(imageView) );
                             //Add hv vào database
+                        if(tkAdd.getText().toString().trim().equals("")&&mkAdd.getText().toString().trim().equals("")&&
+                        tenAdd.getText().toString().trim().equals("")&&sdtAdd.getText().toString().trim().equals("")){
+                            Toast.makeText(getActivity(), "Bạn chưa nhập gì xịn hãy nhập", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(tkAdd.getText().toString().trim().length()<6){
+                            Toast.makeText(getActivity(), "Tên đăng nhập phải lớn hơn 6 kí tự!", Toast.LENGTH_SHORT).show();
+                        }else if(mkAdd.getText().toString().trim().length()<6){
+                            Toast.makeText(getActivity(), "Mật khẩu phải lớn hơn 6 kí tự!", Toast.LENGTH_SHORT).show();
+                        }else if(sdtAdd.getText().toString().trim().length()<10||sdtAdd.getText().toString().length()>13||sdtAdd.getText().toString().matches(reg)){
+                            Toast.makeText(getActivity(), "Không đúng định dạng số điện thoại!", Toast.LENGTH_SHORT).show();
+                        }else if(tenAdd.getText().toString().trim().length()<3){
+                            Toast.makeText(getActivity(), "Hãy nhập tên đầy đủ! ", Toast.LENGTH_SHORT).show();
+                        }else{
                             DataBaSe.getInstance(getActivity()).dao_nv().insertNV(nv);
-                            //View list hv lên màn hình
                             loadData();
+                            dialog.dismiss();
+                        }
+//                        if(tkAdd.getText().toString().length()>5&&sdtAdd.getText().toString().length()<10&&sdtAdd.getText().toString().length()>13||sdtAdd.getText().toString().matches(regexStr)==false&&
+//                                mkAdd.getText().toString().length()>6 && tenAdd.getText().toString().length()>10 && sdtAdd.getText().toString().length()==10)
+//                        {
+//
+//                        }else{
+//                            Toast.makeText(getActivity(), "Hay nhap dung cac truong thong tin", Toast.LENGTH_SHORT).show();
+//                        }
+                            //View list hv lên màn hình
+
                             sonv();
                             Log.d("zzz", "onViewCreated: " + list.size());
-                            dialog.dismiss();
+
 
                     }
                 });
@@ -149,8 +190,13 @@ public class DSNhanVienFragment extends Fragment {
 
             }
         });
-        tvsnv.setText("Số Lượng : "+sonv());
 
+
+    }
+    public void vadilate(){
+        if(tkAdd.getText().toString().length()>5){
+
+        }
     }
 
     public void loadData() {
@@ -171,7 +217,7 @@ public class DSNhanVienFragment extends Fragment {
     public int sonv(){
         int x = 0;
         lissonv =(ArrayList<NhanVien>) DataBaSe.getInstance(getActivity()).dao_nv().getAllNV();
-        for (int i = 1;i<lissonv.toArray().length;i++){
+        for (int i = 0;i<lissonv.toArray().length;i++){
 
             x=i+1;
         }

@@ -34,7 +34,7 @@ import thinhnh.fpoly.myapp.csdl.DTO.KhungGio;
 import thinhnh.fpoly.myapp.csdl.DTO.San;
 import thinhnh.fpoly.myapp.csdl.DTO.TrangThaiHoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
-
+////////////////////////////////////////////////////////////////////
 public class
 ThemHoaDonActivity extends AppCompatActivity {
     //wexrdfgvhbuinuytvrerxctyvbun

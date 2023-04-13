@@ -30,9 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <TextView
+    android:textAlignment="center"
     android:textSize="20dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="10dp"
     android:id="@+id/text1"
-    android:text="a"
+    android:text=""
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
 
@@ -102,17 +105,7 @@
                     android:layout_weight="1"
                     android:textStyle="bold"
                     />
-                <Button
-                    android:background="@drawable/shape_background_item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnEndSwapPass_changge"
-                    android:text="Hủy"
-                    android:backgroundTint="#979494"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_weight="1"
-                    android:textStyle="bold"
-                    />
+
             </LinearLayout>
         </LinearLayout>
 

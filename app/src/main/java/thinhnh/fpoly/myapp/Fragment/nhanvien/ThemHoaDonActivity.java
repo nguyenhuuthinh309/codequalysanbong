@@ -84,15 +84,15 @@ ThemHoaDonActivity extends AppCompatActivity {
         tenkh = (TextInputEditText) findViewById(R.id.tenkh);
         sdtkh = (TextInputEditText) findViewById(R.id.sdtkh);
         spnkhunggio = (Spinner) findViewById(R.id.spnkhunggio);
-        timkiemhoadon = (ImageView) findViewById(R.id.timkiemhoadon);
+
         spntensan = (Spinner) findViewById(R.id.spntensan);
         giasanset = (TextView) findViewById(R.id.giasan1);
         edsoluongbong = (EditText) findViewById(R.id.edsoluongbong);
         tvgianbong = (TextView) findViewById(R.id.tvgianbong);
         edsoluongnuoc = (EditText) findViewById(R.id.edsoluongnuoc);
-        tvgianuoc = (TextView) findViewById(R.id.tvgianuoc);
+
         edsoluongao = (EditText) findViewById(R.id.edsoluongao);
-        tvgiaao = (TextView) findViewById(R.id.tvgiaao);
+
         tongtienbutton = (Button) findViewById(R.id.tongtien);
         texttongtien = (TextView) findViewById(R.id.texttongtien);
         spntrangthai = (Spinner) findViewById(R.id.spntrangthai);
@@ -126,19 +126,7 @@ ThemHoaDonActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        timkiemhoadon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-//                HashMap<String,Object> hs2 = (HashMap<String, Object>) spnkhunggio.getSelectedItem();
-//                int makg1 = (int) hs2.get("makhunggio");
-//                listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getApplicationContext()).dao_hoadon().getabc(makg1);
-//
-//loadData();
-
-
-            }
-        });
 
         tongtienbutton.setOnClickListener(new View.OnClickListener() {
             @Override

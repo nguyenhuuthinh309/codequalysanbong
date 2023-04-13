@@ -24,7 +24,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="70dp"
         android:layout_toRightOf="@+id/img_nav_avata"
-        android:text="He’s lo he’s Lyly"
+        android:text="Họ Tên"
         android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold" />
@@ -35,7 +35,7 @@
         android:layout_below="@+id/tv_nav_name"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/img_nav_avata"
-        android:text="Admin"
+        android:text="email"
         android:textColor="@color/white"
         android:textSize="14dp"
         android:id="@+id/tv_nav_chucvu"

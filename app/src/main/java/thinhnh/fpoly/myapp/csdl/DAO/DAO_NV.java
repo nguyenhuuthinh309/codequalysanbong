@@ -29,6 +29,10 @@ public interface DAO_NV {
     List<NhanVien> getNVtheoId(int id);
 
 
+    @Query("select * from NhanVien where tk_NV= :user")
+    List<NhanVien> getHVtheoUser(String user);
+
+
 
 
 

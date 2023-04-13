@@ -13,6 +13,9 @@ public class DichVu {
         return tendv;
     }
 
+    public DichVu() {
+    }
+
     public void setTendv(String tendv) {
         this.tendv = tendv;
     }

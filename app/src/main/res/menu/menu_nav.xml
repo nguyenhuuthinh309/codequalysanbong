@@ -28,7 +28,10 @@
             <item android:title="Trạng Thái"
                 android:icon="@drawable/ic_trangthai"
                 android:id="@+id/trangthai"/>
-
+            <item android:title="List hóa đơn"
+                android:id="@+id/listhoadon"
+                android:icon="@drawable/ic_trangthai"
+                />
             <item android:id="@+id/hoadon"
                 android:title="Hóa Đơn"
                 android:icon="@drawable/ic_hoadon"/>

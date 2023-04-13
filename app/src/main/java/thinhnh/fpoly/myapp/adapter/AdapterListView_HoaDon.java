@@ -123,7 +123,7 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
         ViewHolder finalViewHolder = viewHolder;
         if(viewHolder.itemHdtrangthai.getText().toString().equals("Chua thanh toan")){
             viewHolder.itemHdtrangthai.setTextColor(color);
-        }else if(viewHolder.itemHdtrangthai.getText().toString().equals("Da thanh toan")){
+        }else{
             viewHolder.itemHdtrangthai.setTextColor(colorxanh);
         }
 
@@ -376,7 +376,6 @@ public class  AdapterListView_HoaDon extends BaseAdapter {
 
     private ArrayList<HashMap<String,Object>> getdskhunggio(){
         listkhunggio = (ArrayList<KhungGio>) DataBaSe.getInstance(context.getApplicationContext()).dao_khunggio().getAllkhunggio();
-
         ArrayList<HashMap<String,Object>> listhmkg = new ArrayList<>();
         for(KhungGio san1 : listkhunggio){
             HashMap<String , Object> hs = new HashMap<>();

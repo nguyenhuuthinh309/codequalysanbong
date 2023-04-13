@@ -1,9 +1,13 @@
-package thinhnh.fpoly.myapp.Fragment.nhanvien;
+package thinhnh.fpoly.myapp.Fragment.NguoiDung;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,48 +18,34 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import thinhnh.fpoly.myapp.R;
 import thinhnh.fpoly.myapp.adapter.AdapterListView_HoaDon;
-import thinhnh.fpoly.myapp.adapter.AdapterListView_HoaDonNhanVien;
 import thinhnh.fpoly.myapp.csdl.DTO.HoaDon;
 import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
-public class HoaDonFragment extends Fragment {
-
-     ListView lisCs;
-     FloatingActionButton floatCs;
-     EditText tvtentimkiem;
-     ImageView imgtimkiem;
-
-
+public class ListhoadonFragment extends Fragment {
+    ListView lisCs;
+    FloatingActionButton floatCs;
+    EditText tvtentimkiem;
+    ImageView imgtimkiem;
     HoaDon hd;
-
+    TextView tvngaylist;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    int myear,mmonth,mday;
     ArrayList<HoaDon> listhoadon = new ArrayList<>();
     AdapterListView_HoaDon adapterListView_hoaDon;
-    AdapterListView_HoaDonNhanVien adapterListView_hoaDonNhanVien;
-
-
-
-    TextView soluong;
-
-
-    public HoaDonFragment() {
+    public ListhoadonFragment() {
         // Required empty public constructor
     }
 
-
-    // TODO: Rename and change types and number of parameters
-    public static HoaDonFragment newInstance() {
-        HoaDonFragment fragment = new HoaDonFragment();
+    public static ListhoadonFragment newInstance() {
+        ListhoadonFragment fragment = new ListhoadonFragment();
 
         return fragment;
     }
@@ -63,51 +53,42 @@ public class HoaDonFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
 
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hoa_don, container, false);
+        return inflater.inflate(R.layout.fragment_listhoadon, container, false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        loadDataa();
-        soluong.setText(Integer.toString(demsoluong()));
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-      //  loadDataa();
-    }
 
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Resources res = view.getResources();
         int color = res.getColor(R.color.maudo);
         Resources resa = view.getResources();
         int colorxanh = resa.getColor(R.color.purple_700);
-
-
         imgtimkiem = view.findViewById(R.id.imgtimkiemten);
         tvtentimkiem = view.findViewById(R.id.lis_edttenhdtimkiem);
-        soluong = view.findViewById(R.id.sonv1);
-
         lisCs = (ListView) view.findViewById(R.id.lis_cs);
-        imgtimkiem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().gettenhoadon(tvtentimkiem.getText().toString());
-                loadData();
-            }
-        });
+        tvngaylist = view.findViewById(R.id.tvngaylist);
+        Calendar calendar = Calendar.getInstance();
+        myear = calendar.get(Calendar.YEAR);
+        mmonth = calendar.get(Calendar.MONTH);
+        mday = calendar.get(Calendar.DAY_OF_MONTH);
+        Calendar c = Calendar.getInstance();
+        tvngaylist.setText("Ngày: "+simpleDateFormat.format(c.getTime()));
+        String ngay = tvngaylist.getText().toString();
         lisCs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -144,18 +125,9 @@ public class HoaDonFragment extends Fragment {
             }
 
         });
-        floatCs = (FloatingActionButton) view.findViewById(R.id.float_cs);
-        loadDataa();
-        floatCs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ThemHoaDonActivity.class));
-            }
-        });
-
+        listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().gettten(simpleDateFormat.format(c.getTime()));
+       loadData();
     }
-
-
     public void loadData() {
         //listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
         adapterListView_hoaDon = new AdapterListView_HoaDon(getActivity(),this::loadData);
@@ -163,18 +135,16 @@ public class HoaDonFragment extends Fragment {
         lisCs.setAdapter(adapterListView_hoaDon);
     }
     public void loadDataa() {
-        listhoadon = (ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
         adapterListView_hoaDon = new AdapterListView_HoaDon(getActivity(),this::loadDataa);
         adapterListView_hoaDon.setdata(listhoadon);
         lisCs.setAdapter(adapterListView_hoaDon);
     }
-    public int demsoluong(){
-        int x = 0;
-        listhoadon =(ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
-        for(int i  = 0 ; i<listhoadon.toArray().length;i++){
-            x = i+1;
-        }
-        return x;
-    }
-
+//    public int demsoluong(){
+//        int x = 0;
+//        listhoadon =(ArrayList<HoaDon>) DataBaSe.getInstance(getActivity()).dao_hoadon().getAllHOADON();
+//        for(int i  = 0 ; i<listhoadon.toArray().length;i++){
+//            x = i+1;
+//        }
+//        return x;
+//    }
 }

@@ -12,7 +12,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-
+        android:id="@+id/header"
         android:layout_marginBottom="5dp"
         android:background="@drawable/shape_background_item2"
         android:paddingLeft="40dp"
@@ -25,51 +25,35 @@
 
 
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:src="@drawable/anhdoanhthu"
+            android:id="@+id/imgdoanhthu"/>
+    <TextView
+        android:id="@+id/tvvanban"
+        android:layout_below="@+id/imgdoanhthu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robito_indam"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Tổng Doanh thu: "
 
+        android:textColor="@color/mau_nen"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/tv_doanhthu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/robito_indam"
+        android:gravity="center"
+        android:textColor="@color/mau_nen"
+        android:layout_below="@+id/tvvanban"
+        android:textSize="25dp" />
 
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="120dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <Button
-                    android:id="@+id/btnTongDoanhThu"
-                    android:layout_width="0dp"
-                    android:layout_weight="4"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:backgroundTint="@color/mau_nen"
-                    android:text="Tổng doanh thu"
-                    android:textColor="@color/white" />
-
-
-                <TextView
-                    android:id="@+id/tv_doanhthu"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/robito_indam"
-                    android:gravity="center|right"
-                    android:text=""
-                    android:textColor="@color/mau_nen"
-                    android:textSize="25dp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/robito_indam"
-                    android:gravity="center|left"
-                    android:text="VNĐ"
-                    android:textColor="@color/mau_nen"
-                    android:textSize="25dp" />
-            </LinearLayout>
 
 
 

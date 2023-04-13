@@ -95,12 +95,13 @@ public class DanhSachTinhTrangfragment extends Fragment {
                 btnAddSan = (Button) dialog.findViewById(R.id.btnAddSan);
                 btnHuyAddSan = (Button) dialog.findViewById(R.id.btnHuyAddSan);
                 SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), getDSSan(), android.R.layout.simple_list_item_1, new String[]{"tensan"}, new int[]{android.R.id.text1});
+
                 spntensan.setAdapter(simpleAdapter);
                 btnAddSan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 //                        if (validate()){}
-
+//
                         HashMap<String,Object> hs1 = (HashMap<String, Object>) spntensan.getSelectedItem();
                         int masan = (int) hs1.get("masan");
 
@@ -136,7 +137,7 @@ public class DanhSachTinhTrangfragment extends Fragment {
     }
 
 
-    public void loadData() {
+    public void loadData() {//
         list1 = (ArrayList<BaoCao>) DataBaSe.getInstance(getActivity()).dao_baoCao().getAllBc();
         adapterListView_san = new AdapterListView_BaoCao(getActivity(),this::loadData);
         adapterListView_san.setdata(list1);

@@ -35,7 +35,7 @@ public class AdapterListView_San extends BaseAdapter {
     Context context;
     LoaiSan loaiSan;
     InteLoadData inteCS;
-    ArrayList<HashMap<String,Object>> listHM;
+    ArrayList<HashMap<String, Object>> listHM;
     ArrayList<LoaiSan> listloaisan = new ArrayList<>();
 
     public AdapterListView_San(Context context, InteLoadData inteCS) {
@@ -66,6 +66,7 @@ public class AdapterListView_San extends BaseAdapter {
     public long getItemId(int i) {
         return 0;
     }
+
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -98,7 +99,6 @@ public class AdapterListView_San extends BaseAdapter {
         viewHolder.itemVitri.setText("Vị Trí       :  "+san.getVitrisan());
         viewHolder.itemGia.setText("Giá Sân   :  "+san.getGiasan());
 
-
     viewHolder.itemtenloaisan.setText("Loại Sân  :  "+san.getTenloai());
 
         ViewHolder finalViewHolder = viewHolder;
@@ -108,7 +108,6 @@ public class AdapterListView_San extends BaseAdapter {
             public void onClick(View view) {
                 Dialog dialogEdit = new Dialog(context);
                 dialogEdit.setContentView(R.layout.dialog_san_edit);
-
 
                 TextInputEditText   tensanedit = (TextInputEditText) dialogEdit.findViewById(R.id.tensanedit);
                 TextInputEditText   vitriedit = (TextInputEditText) dialogEdit.findViewById(R.id.vitriedit);
@@ -121,7 +120,6 @@ public class AdapterListView_San extends BaseAdapter {
                 tensanedit.setText(san.getTensan());
                 vitriedit.setText(san.getVitrisan());
                 giaedit.setText(san.getGiasan());
-
 
 
 
@@ -153,7 +151,6 @@ public class AdapterListView_San extends BaseAdapter {
                         String masan = (String) hs.get("tenloai");
 
                         san.setTenloai(masan);
-
 
 
                         DataBaSe.getInstance(context).dao_san().updataSan(san);
@@ -204,13 +201,11 @@ viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
     }
     public class ViewHolder {
 
-
          TextView itemTensan;
          TextView itemVitri;
          TextView itemGia;
          TextView itemLoaisan, itemtenloaisan;
          ImageView avt, itemsua,itemxoa;
-
 
 
 
@@ -234,5 +229,6 @@ viewHolder.itemxoa.setOnClickListener(new View.OnClickListener() {
 
         }
         return listhm;
-    }
+       // return view;
+   }
 }

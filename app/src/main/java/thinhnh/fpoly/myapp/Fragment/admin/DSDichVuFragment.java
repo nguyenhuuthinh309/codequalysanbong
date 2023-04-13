@@ -26,7 +26,7 @@ import thinhnh.fpoly.myapp.csdl.data.DataBaSe;
 
 public class DSDichVuFragment extends Fragment {
 
-
+//lllllllllllll
      ListView lisCs;
      FloatingActionButton floatCs;
 
@@ -39,7 +39,7 @@ public class DSDichVuFragment extends Fragment {
 
      AdapterListView_DichVu adapterListView_dichVu;
 
-
+//kkkkkkkkkkkkkkkkk
     public DSDichVuFragment() {
         // Required empty public constructor
     }
